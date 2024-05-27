@@ -33,7 +33,7 @@ export class LandingComponent implements OnInit{
     })
   }
   getVehicTypeId(id:any){
-    if (isPlatformBrowser(this.platformId)) {
+    if (typeof window !== 'undefined')  {
       localStorage.setItem('vehicTypeId',id)
     }
      

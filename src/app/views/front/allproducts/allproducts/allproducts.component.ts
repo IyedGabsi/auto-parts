@@ -103,9 +103,17 @@ export class AllproductsComponent implements OnInit,OnDestroy {
     this.getProducts(this.params,this.listOfTagMarques)
   }
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)){
+    if (typeof window !== 'undefined') {
       this.lvehicTypeId=localStorage.getItem('vehicTypeId')
     }
+    if (isPlatformBrowser(this.platformId)){
+      localStorage.getItem('categorieId')
+    }
+    if (isPlatformBrowser(this.platformId)){
+      localStorage.getItem('sort')
+    }
+    if (isPlatformBrowser(this.platformId)){}
+    if (isPlatformBrowser(this.platformId)){}
       this.getVehiculTypes()
       if(this.lpieceTypeId){
         this.params.piecetype=this.lpieceTypeId
