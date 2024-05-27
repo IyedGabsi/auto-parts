@@ -59,10 +59,10 @@ export class AllproductsComponent implements OnInit,OnDestroy {
   keyword='';
   
   lvehicTypeId:any
-  lcategorieId:any=localStorage.getItem('categorieId')
-  lpieceTypeId:any=localStorage.getItem('pieceTypeId')
-  lsort:any=localStorage.getItem('sort')
-  lkeyword:any=localStorage.getItem('keyword')
+  lcategorieId:any
+  lpieceTypeId:any
+  lsort:any
+  lkeyword:any
   radioValue = ''
   totalProducts=0
   currentPage = 1; 
@@ -103,14 +103,12 @@ export class AllproductsComponent implements OnInit,OnDestroy {
     this.getProducts(this.params,this.listOfTagMarques)
   }
   ngOnInit(): void {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       this.lvehicTypeId=localStorage.getItem('vehicTypeId')
-    }
-    if (isPlatformBrowser(this.platformId)){
-      localStorage.getItem('categorieId')
-    }
-    if (isPlatformBrowser(this.platformId)){
-      localStorage.getItem('sort')
+      this.lcategorieId=localStorage.getItem('categorieId')
+      this.lpieceTypeId=localStorage.getItem('pieceTypeId')
+      this.lsort=localStorage.getItem('sort')
+      this.lkeyword=localStorage.getItem('keyword')
     }
     if (isPlatformBrowser(this.platformId)){}
     if (isPlatformBrowser(this.platformId)){}
@@ -345,7 +343,9 @@ export class AllproductsComponent implements OnInit,OnDestroy {
   }
 
   getProductId(id:any){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
     localStorage.setItem('productId',id)
+    }
     this.router.navigate(['/productDetails'])
   }
   isFavorite: boolean = false
@@ -390,10 +390,12 @@ export class AllproductsComponent implements OnInit,OnDestroy {
     })
   }
   ngOnDestroy(): void {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
     localStorage.removeItem('vehicTypeId');
     localStorage.removeItem('categorieId');
     localStorage.removeItem('pieceTypeId');
     localStorage.removeItem('sort');
     localStorage.removeItem('keyword');
+    }
   }
 }

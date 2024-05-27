@@ -18,12 +18,12 @@ import { Router } from '@angular/router';
   styleUrl: './vrif-register.component.scss'
 })
 export class VrifRegisterComponent {
-  name:any=localStorage.getItem('name')
-  phone:any=localStorage.getItem('phone')
-  email:any=localStorage.getItem('email')
-  password:any=localStorage.getItem('password')
-  code:any=localStorage.getItem('jess')
-  expire:any=localStorage.getItem('active')
+  name:any
+  phone:any
+  email:any
+  password:any
+  code:any
+  expire:any
 
   validateForm: FormGroup<{
     resetCode: FormControl<string>;
@@ -61,17 +61,27 @@ export class VrifRegisterComponent {
     this.as.register(data).subscribe((res:any)=>{
        this.as.saveProfileData(res.token)
       this.router.navigate(['/user/informations'])
+      if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       localStorage.removeItem('name')
       localStorage.removeItem('phone')
       localStorage.removeItem('email')
       localStorage.removeItem('passsword')
       localStorage.removeItem('jess')
       localStorage.removeItem('active')
+      }
     },(err)=>{
       this.messageService.error(err.error.message)
     })
   }
   constructor(private fb: NonNullableFormBuilder, private as:AuthService,private messageService: NzMessageService, private router:Router){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+      this.name=localStorage.getItem('name')
+      this.phone=localStorage.getItem('phone')
+      this.email=localStorage.getItem('email')
+      this.password=localStorage.getItem('password')
+      this.code=localStorage.getItem('jess')
+      this.expire=localStorage.getItem('active')
+    }
     if(this.as.loggedIn()){
       this.router.navigate(['/'])
     }

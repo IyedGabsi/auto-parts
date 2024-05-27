@@ -56,7 +56,10 @@ export class ResetPasswordComponent implements OnDestroy{
     return '';
   }
   submitForm(): void {
-    let email:any=localStorage.getItem('email')
+    let email:any
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'){
+     email=localStorage.getItem('email')
+    }
     let data=this.validateForm.value
     data.email = email
     
@@ -88,6 +91,9 @@ export class ResetPasswordComponent implements OnDestroy{
     });
   }
   ngOnDestroy(): void {
-    localStorage.removeItem('email')
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+      localStorage.removeItem('email')
+    }
+    
   }
 }

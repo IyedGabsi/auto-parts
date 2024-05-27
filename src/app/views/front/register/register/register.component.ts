@@ -88,12 +88,14 @@ export class RegisterComponent {
     let data=this.validateForm.value
     this.as.sendRegisterCode(data).subscribe((res:any)=>{
       console.log('hi')
+      if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       localStorage.setItem('name',res.user.name)
       localStorage.setItem('phone',res.user.phone)
       localStorage.setItem('email',res.user.email)
       localStorage.setItem('password',res.user.password)
       localStorage.setItem('jess',res.code)
       localStorage.setItem('active',res.expire)
+      }
       this.router.navigate(['/verifRegister'])
       this.messageService.success('Code envoyé avec succès')
      

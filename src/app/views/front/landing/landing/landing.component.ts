@@ -33,7 +33,7 @@ export class LandingComponent implements OnInit{
     })
   }
   getVehicTypeId(id:any){
-    if (typeof window !== 'undefined')  {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined')  {
       localStorage.setItem('vehicTypeId',id)
     }
      
@@ -60,15 +60,21 @@ export class LandingComponent implements OnInit{
     })
   }
   goToNouvelArrivage(){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined')  {
     localStorage.setItem('sort','-createdAt')
+    }
     this.router.navigate(['/allproducts'])
   }
   goToMostSelled(){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined')  {
     localStorage.setItem('sort','-sold')
+    }
     this.router.navigate(['/allproducts'])
   }
   getProductId(id:any){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined')  {
     localStorage.setItem('productId',id)
+    }
     this.router.navigate(['/productDetails'])
   }
   

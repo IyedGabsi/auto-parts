@@ -82,7 +82,9 @@ export class ProductsComponent implements OnInit {
     this.updatePaginatedData(pageNumber);
   }
   getProductId(id:any){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
     localStorage.setItem('productId',id)
+    }
     this.router.navigate(['/productDetails'])
   }
   search(){

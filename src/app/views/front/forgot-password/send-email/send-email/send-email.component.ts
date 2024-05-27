@@ -45,8 +45,9 @@ export class SendEmailComponent {
   submitForm(): void {
     let data=this.validateForm.value
     this.email=data.email
-    
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'){
     localStorage.setItem('email',this.email)
+    }
     this.as.forgotPassword(data).subscribe((res:any)=>{
       this.messageService.success(res.message)
       this.router.navigate(['/forgotPassword/sendCode'])

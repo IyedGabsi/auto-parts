@@ -43,7 +43,7 @@ import { UsersDataService } from '../../../services/users-data.service';
 export class ProductDetailsComponent implements OnInit{
   wishList:any=[]
   relatedProducts:any
-   productId:any=localStorage.getItem('productId')
+   productId:any
   productData:any={}
   reviewsData:any={}
   addShowData:any
@@ -59,6 +59,9 @@ export class ProductDetailsComponent implements OnInit{
     
   }
   ngOnInit () {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+      this.productId=localStorage.getItem('productId')
+    }
     this.ps.getProduct(this.productId).subscribe((data:any)=>{
       this.productData=data.data
      
@@ -167,7 +170,9 @@ export class ProductDetailsComponent implements OnInit{
    
   }
   getProductId(id:any){
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
     localStorage.setItem('productId',id)
+    }
     this.router.navigate(['/productDetails'])
   }
   isFavorite: boolean = false
