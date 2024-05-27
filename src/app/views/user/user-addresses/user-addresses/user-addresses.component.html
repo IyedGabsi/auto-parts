@@ -1,0 +1,65 @@
+<div class="pageContent">
+    <div class="item" *ngFor="let data of listOfData;index as i">
+        <div class="leReste">
+            
+                <div class="deleteModify">
+                    <!-- <a href="" class="update"><i class="fa-solid fa-pen-to-square"></i></a> -->
+                    <a  class="delete" (click)="delete(data._id,i)"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            
+            <div class="detailsProduct">
+                <h4 class="title">{{data.alias}}</h4>
+                <div class="semilardetails">
+                    <h6 class="details">{{data.city}}, {{data.details}}</h6>
+                    <h6 class="details">Code postale : <span>{{data.postalCode}}</span></h6>
+                    <h6 class="details">Téléphone : <span>{{data.phone}}</span></h6>
+
+                </div>
+                
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <div class="align-right">
+        <button nz-button class="addButton" [nzType]="'primary'" (click)="showModal()" ><span>Ajouter Adress</span></button>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Ajouter une adresse" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm()">
+      <ng-container *nzModalContent>
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            
+            <nz-form-item >
+              <nz-form-control [nzSpan]="14" [nzErrorTip]="getAliasErrorMessage()">
+                <input nz-input placeholder="Titre" formControlName='alias' type="text" id="alias" />
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item >
+                <nz-form-control [nzSpan]="14" [nzErrorTip]="getCityErrorMessage()">
+                  <input nz-input placeholder="Ville" formControlName='city' type="text" id="city" />
+                </nz-form-control>
+              </nz-form-item>
+
+              <nz-form-item >
+                <nz-form-control [nzSpan]="14" [nzErrorTip]="getPostalCodeErrorMessage()">
+                  <input nz-input placeholder="Code postale" formControlName='postalCode' type="number" id="postalCode" />
+                </nz-form-control>
+              </nz-form-item>
+
+              <nz-form-item >
+                <nz-form-control [nzSpan]="14" [nzErrorTip]="getDetailsErrorMessage()">
+                  <input nz-input placeholder="Rue" formControlName='details' type="text" id="details" />
+                </nz-form-control>
+              </nz-form-item>
+
+              <nz-form-item >
+                <nz-form-control [nzSpan]="14" [nzErrorTip]="getPhoneErrorMessage()">
+                  <input nz-input placeholder="Numéro de téléphone" formControlName='phone' type="number" id="phone" />
+                </nz-form-control>
+              </nz-form-item>
+          </form>
+      </ng-container>
+    </nz-modal>
+    <nz-empty *ngIf="totalItems==0" [nzNotFoundContent]="'Il n y a pas de données. Essayez d ajouter des produits.'"> no items</nz-empty>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="chariotContent">
+    <div class="titleVider">
+        <h3 class="title">Chariot</h3>
+        <button nz-button nzType="dashed" (click)="viderChariot()">Vider</button>
+    </div>
+    <div class="order" *ngIf="hasACart">
+        <div class="buy">
+            <div class="shippingAdress">
+                <h3 style="margin-bottom: 0;">Adresse de livraison</h3>
+                <nz-radio-group [(ngModel)]="radioValue" style="margin-bottom: 20px;">
+                    <label *ngFor="let data of adresses;index as i" nz-radio [nzValue]="data">{{data.alias}}
+                       </label>
+                  </nz-radio-group>
+            </div>
+            <nz-input-group nzSearch nzSize="large"  style="margin-bottom: 10px;" [nzAddOnAfter]="suffixButton">
+                <input [(ngModel)]="couponCode" type="text" nz-input placeholder="Si vous avez un coupon.." />
+              </nz-input-group>
+              <ng-template #suffixButton>
+                <button nz-button nzType="default" style="color: #ff5927;" (click)="submitCoupon()"  nzSearch>Appliqué</button>
+              </ng-template>
+            <h6 *ngIf="!cartData.totalPriceAfterDiscount" class="totalPrice"> <span>$ {{cartData.totalChariotPrice}}</span></h6>
+            <h6 *ngIf="cartData.totalPriceAfterDiscount" class="totalPrix"> <span class="mchateb">${{cartData.totalChariotPrice}}</span> ${{cartData.totalPriceAfterDiscount}} </h6>
+            
+                <!-- <button nz-button nzType="dashed">Vider le chariot</button> -->
+                <button nz-button nzType="primary" (click)="submitPurchase()" nzSize="large">Compléter l'achat</button>
+           
+        </div>
+        <div class="items">
+            
+            <div class="item" *ngFor="let data of paginatedData;index as i">
+                <div class="imageProduct">
+                    <img src={{data.product.imageCover}} >
+                </div>
+                <div class="leReste">
+                    <div class="align-right">
+                        <a (click)="deleteItem(data._id,i)" class="delete"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                    <div class="detailsProduct">
+                        <div class="nameRating">
+                            <h4 class="name">{{data.product.title}}</h4>
+                            <h4 class="rating"><i class="fa-solid fa-star"></i>{{data.product.ratingsAverage}}</h4>
+                        </div>
+                        <div class="semilardetails">
+                            <!-- <h6 class="details">marque : <span>{{data.product.marque}}</span> </h6> -->
+                            <h6 class="details" *ngIf="!data.product.priceAfterDiscount">prix unitaire : <span>{{data.product.price}}$</span></h6>
+                            <h6 class="details" *ngIf="data.product.priceAfterDiscount">prix unitaire : <span>{{data.product.priceAfterDiscount}}$</span></h6>
+                            <h6 class="details">Quantité : <span>{{data.quantity}}</span></h6>
+                        </div>
+                        <div class="updateQuantity">
+                            <h6>Changer la quantité :</h6>
+                            <nz-space nzDirection="vertical" style="width: 55%">
+     
+      
+                                <nz-input-number-group *nzSpaceItem nzCompact>
+                                  <nz-input-number [nzMin]="1" [ngModel]="Iquantity" [(ngModel)]="quantity" [nzStep]="1" style="width: calc(100% - 200px)"></nz-input-number>
+                                  <button nz-button nzType="default" (click)="submitQuantity(data._id,i)" class="btn-customm"><span nz-icon nzType="check" nzTheme="outline"></span></button>
+                                </nz-input-number-group>
+                                
+                              </nz-space>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="paginate-style">
+                <nz-pagination
+                style="margin-bottom: 20px;margin-left: 20px;"
+               [nzPageIndex]="currentPage"
+               [nzPageSize]="pageSize"
+               (nzPageIndexChange)="changePage($event)"
+               [nzTotal]="totalItems"
+                ></nz-pagination>
+              </div>
+        </div>
+       
+    </div>
+    <nz-empty *ngIf="!hasACart" [nzNotFoundContent]="'Votre panier est vide. Essayez d ajouter des produits.'"> no items</nz-empty>
+</div>

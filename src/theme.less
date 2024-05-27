@@ -1,0 +1,46 @@
+
+// Custom Theming for NG-ZORRO
+// For more information: https://ng.ant.design/docs/customize-theme/en
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+
+// Override less variables to here
+// View all variables: https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/style/themes/default.less
+
+@primary-color: #ff5927;
+@secondary-color:#1e50b4;
+@border-radius-base: 5px;
+@body-background: #E6E6FA;
+@font-family: "Kanit", sans-serif; 
+@font-size-base: 16px; 
+@font-size-lg: @font-size-base + 2px; 
+@font-size-sm: @font-size-base - 2px; 
+@nz-sider-background:green;
+@modal-content-bg: #E6E6FA;
+@modal-content-selector: ".ant-modal-body";
+@{modal-content-selector} {
+    background-color: @modal-content-bg;
+  }
+@modal-header-bg: #E6E6FA;
+@modal-header-selector: ".ant-modal-header"; 
+@{modal-header-selector} {
+    background-color: @modal-header-bg;
+  }
+
+  .ant-descriptions-bordered .ant-descriptions-item-label {
+    background-color: rgb(147 165 185);
+}
+.ant-descriptions-bordered .ant-descriptions-item-label, .ant-descriptions-bordered .ant-descriptions-item-content {
+  
+  border: 1px solid black;
+}
+.ant-descriptions-bordered .ant-descriptions-view {
+  border: .5px solid black;
+}
+ .ant-menu-sub {
+  background-color: #E6E6FA;
+}
+.ant-menu-submenu-title .anticon {
+  min-width: 14px;
+  font-size: 22px;
+  transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.3s;
+}

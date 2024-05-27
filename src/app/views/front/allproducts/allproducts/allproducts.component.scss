@@ -1,0 +1,269 @@
+.layout {
+    min-height: 100vh;
+    background-color: var(--lightColor1);
+  }
+
+  .logo {
+    height: 32px;
+    background: var(--lightColor1);
+    margin: 16px;
+  }
+  // .ant-layout-sider-children {
+  //   box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  // }
+  .slect{
+     padding-left: 7px;
+     padding-right: 7px;
+     text-align: center;
+  }
+  nz-select {
+    width: 100%;
+  }
+
+  nz-header {
+    background: var(--lightColor1);
+    padding: 0;
+    text-align: center;
+  }
+
+  nz-content {
+    margin: 24px 16px 0;
+    background: var(--lightColor1);
+  }
+
+  .inner-content {
+    
+   
+    background: #E6E6FA;
+    min-height: 360px;
+  }
+  .inner-content .all-products{
+   
+    display: flex;
+    flex-wrap: wrap;
+  }
+  nz-footer {
+    text-align: center;
+  }
+  .custom-sidebar{
+    padding-top: 75px;
+    background: #E6E6FA;
+    // box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  }
+  .optionsList{
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sliderInputs{
+    display: flex;
+    justify-content: space-between;
+  }
+
+.ant-input-number{
+  margin-left: 0;
+}
+.ant-menu-submenu .ant-menu-sub {
+  background-color: #E6E6FA;
+}
+
+
+
+
+.productCard{
+  // padding: 10px;
+  background-color: #fff;
+  color: var(--darkColor);
+  border-radius: .6rem;
+  width: 230px;
+  height: 400px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 0 0 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: .3s;
+}
+.productCard:hover{
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+.productDetails{
+
+  text-decoration: none;
+  color: var(--darkColor);
+}
+//   .productCard .img-box{
+//     width: 100%;
+//     height: 100%;
+//     border-radius: .6rem;
+//   }
+.productCard  img{
+  object-fit: cover;
+  width: 100%;
+  height: 210px;
+  
+  border-radius: .6rem;
+ 
+}
+.productCard .textContent{
+  
+  // background-color: #cadafc;
+  margin: 1rem;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.productCard .textContent .price{
+  font-weight: bold;
+  font-size: 16px;
+}
+.productCard .textContent .rating{
+  color: var(--primarycolor);
+}
+.productCard .textContent h5 span{
+  color: var(--bgColor-5);
+  text-decoration:line-through;
+}
+.productCard .name{
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+.productCard .discription{
+  padding-left: 10px;
+  padding-right: 7px;
+  margin-bottom: 0;
+  text-align: center;
+  height: 31px;
+  max-height: 31px;
+  min-height: 31px;
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+  white-space: nowrap;
+
+}
+
+.button-container{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-right: 1rem;
+  
+}
+.button-container .container input {
+  
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.button-container .container input {
+    
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.button-container .container {
+  margin: 0;
+  padding: 1rem;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  transition: 100ms;
+}
+.favorite-checkbox {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.favorite-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.favorite-checkbox i {
+  margin-left: 20px;
+  font-size: 24px;
+  color: var(--primarycolor); 
+  animation: dislike_effect 400ms ease;
+}
+.button-container .checkmark {
+  
+  top: 0;
+  left: 0;
+  height: 2em;
+  width: 2em;
+  transition: 100ms;
+  animation: dislike_effect 400ms ease;
+}
+
+.button-container .container input:not(:checked) + .checkmark path {
+  stroke: var(--primarycolor); 
+}
+
+.button-container .container input:checked ~ .checkmark {
+  animation: like_effect 400ms ease;
+  
+}
+.button-container .container input:checked ~ .checkmark path {
+  fill: var(--primarycolor);
+  stroke-width: 0;
+}
+.button-container .btn{
+  background-color: var(--primarycolor);
+  color:var(--lightColor);
+  font-size: 11px;
+  text-decoration:none;
+  font-weight: bold;
+  padding: 0.41rem 1rem;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  transition: 0.5s;
+}
+.button-container .btn:hover{
+  background-color: transparent;
+  border: 2px solid var(--primarycolor);
+  color:var(--primarycolor);
+}
+
+
+@keyframes like_effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dislike_effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.align-center{
+  text-align: center;
+}
+.Ppagination{
+  text-align: center;
+  margin-bottom: 20px;
+}

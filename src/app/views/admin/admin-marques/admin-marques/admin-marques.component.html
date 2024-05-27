@@ -1,0 +1,40 @@
+<div class="showProducts">
+    <div class="productsPage">
+        <div class="align-right">
+          <button nz-button nzType="primary" (click)="onShowModalClicked()">
+            <span>Ajouter Marque</span>
+          </button>
+            <app-modal (marqueAdded)="onMarqueAdded($event)" (marqueUpdated)="onMarqueUpdated($event)"></app-modal>
+        </div>
+          
+      <div class="content">
+        <!-- hhhhhhh -->
+        
+          <!-- hhhhhhh -->
+        <div class="productCard" *ngFor="let data of listOfData;index as i">
+            <img *ngIf="data.image" src={{data.image}} >
+            <div *ngIf="!data.image" class="imageNotFound">
+              <i class="fa-regular fa-file-image fa-2x"></i> 
+            </div>
+            <h4 class="name"> {{data.name}} </h4>
+            <div class="button-container">
+                <a  class="delete" (click)="delete(data._id,i)"><i class="fa-solid fa-trash"></i></a>
+                  <button nz-button nzType="default" (click)="onShowUpdateModalClicked(data._id,data.name,i)" class="custom-button">
+                    <span>Modifier <i class="fa-solid fa-pen-to-square"></i></span>
+                  </button>
+                
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+       
+
+      </div>
+
+    
+</div>
+

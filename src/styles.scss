@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --primarycolor:#ff5927;
+    --secondaryColor:#93a5b9;
+    --thirdColor:#d63a0a;
+    --lightColor:#ffffff;
+    --lightColor1:#E6E6FA;
+    --lightColor2:#cadafc;
+    --lightColor3:#5178f6;
+    --darkColor:#000000;
+    --bgColor-1:#5090cb;
+    --bgColor-2:#1f6db5;
+    --bgColor-3:#14497a;
+    --bgColor-4:rgb(92, 171, 233);
+    --bgColor-5:#1e50b4;
+    --bhColor-6:rgb(89, 17, 223);
+    --padding:8%;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--lightColor1);
+    display: flex;
+    flex-direction: column;
+}
+html{ 
+    font-family: "Kanit", sans-serif;
+    font-size: 16px;
+    color: var(--lightColor);
+}
+#menu{
+    margin-right: 20px;
+    display: block;
+    position: relative;
+    appearance: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+#menu span{
+    display: block;
+    width: 33px;
+    height: 4px;
+    background-color: var(--lightColor);
+    border-radius: 6px;
+    transform-origin: 0 0;
+    transition: 0.4s;
+    margin-bottom: 5px;
+}
+#menu:hover .menu-Bar{display: none;}

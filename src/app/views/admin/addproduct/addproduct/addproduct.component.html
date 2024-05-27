@@ -1,0 +1,147 @@
+<h2 style="padding-left: 20%;margin-bottom: 30px;">Ajouter Un Produit</h2>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)">
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="imageCover" nzRequired>Image de Couverture</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <nz-upload
+  class="avatar-uploader"
+  [nzShowUploadList]="false"
+  nzListType="picture-card"
+  (nzChange)="handleChange($event)"
+>
+  <ng-container *ngIf="!avatarUrl">
+    <span class="upload-icon" nz-icon [nzType]="'plus'"></span>
+    <div class="ant-upload-text">Upload</div>
+  </ng-container>
+  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+</nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="title" >Images</nz-form-label>
+      <nz-form-control [nzSpan]="12" >
+        <div class="clearfix">
+          <nz-upload 
+            nzListType="picture-card"
+            [(nzFileList)]="fileList"
+            [nzShowButton]="fileList.length < 8"
+            [nzPreview]="handlePreview"
+            (nzChange)="handleChang($event)"
+          >
+            <div>
+              <span nz-icon nzType="plus"></span>
+              <div style="margin-top: 8px">Images</div>
+            </div>
+          </nz-upload>
+          <nz-modal
+            [nzVisible]="previewVisible"
+            [nzContent]="modalContent"
+            [nzFooter]="null"
+            (nzOnCancel)="previewVisible = false"
+          >
+            <ng-template #modalContent>
+              <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+            </ng-template>
+          </nz-modal>
+        </div>
+    
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="title" nzRequired>Nom</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Le Nom de produit est requis!">
+        <input formControlName="title" nz-input placeholder="Nom.." nzSize="default" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="vehicultype" nzRequired>Type de véhicule</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="le Type de Véhicule est requis!">
+      <nz-select formControlName="vehicultype" nzShowSearch nzAllowClear nzPlaceHolder="Sélectionnez un type de véhicule." (ngModelChange)="onVehicleTypeChange($event)" >
+        <nz-option *ngFor="let data of vehicTypes" nzLabel="{{data.name}}" nzValue="{{data._id}}"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="categorie" nzRequired>Catégorie</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="La catégorie est requise!">
+      <nz-select formControlName="categorie" nzShowSearch nzAllowClear nzPlaceHolder="Sélectionnez une catégorie." (ngModelChange)="onCategorieChange($event)" >
+        <nz-option *ngFor="let data of categories" nzLabel="{{data.name}}" nzValue="{{data._id}}"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="piecetype" nzRequired>Type de Piece</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="le Type de Piece est requis!">
+      <nz-select formControlName="piecetype" nzShowSearch nzAllowClear nzPlaceHolder="Sélectionnez un type de pièce." >
+        <nz-option *ngFor="let data of pieceTypes " nzLabel="{{data.name}}" nzValue="{{data._id}}"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="pieceMarque" nzRequired>Marque de piece</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="La Marque de Piece est requise!">
+      <nz-select formControlName="pieceMarque" nzShowSearch nzAllowClear nzPlaceHolder="Sélectionnez la marque de piece." >
+        <nz-option *ngFor="let data of marques" nzLabel="{{data.name}}" nzValue="{{data._id}}"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="marque" >Marque De Voiture</nz-form-label>
+      <nz-form-control [nzSpan]="12" >
+        <nz-select formControlName="marque" nzShowSearch nzAllowClear nzPlaceHolder="Marque de voiture" (ngModelChange)="onVoitureMarqueChange($event)"  >
+          <nz-option *ngFor="let data of marques" nzLabel="{{data.name}}" nzValue="{{data._id}}"></nz-option>
+        </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="sousmarque" >Modèle De Voiture</nz-form-label>
+      <nz-form-control [nzSpan]="12" >
+        <nz-select formControlName="sousmarque" nzShowSearch nzAllowClear nzPlaceHolder="Sélectionnez un modèle" >
+          <nz-option *ngFor="let data of sousmarques" nzLabel="{{data.name}}" nzValue="{{data._id}}"></nz-option>
+        </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzRequired nzFor="price">Prix</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="Le prix est requis!">
+      <nz-input-number  formControlName="price" [nzMin]="1" [nzStep]="1"></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzRequired nzFor="quantity">Quantité</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="La Quantité est requise!">
+      <nz-input-number  formControlName="quantity" [nzMin]="1" [nzStep]="1"></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzRequired nzFor="description">Description</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="La Description est requise!">
+      <textarea
+      formControlName="description"
+      nz-input
+      placeholder="Description..."
+      [nzAutosize]="{ minRows: 2, maxRows: 7 }"
+    ></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="12" [nzOffset]="5">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+  

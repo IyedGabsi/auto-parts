@@ -1,0 +1,41 @@
+<div class="pageContent">
+    <div class="commande" *ngFor="let data of paginatedData;index as i">
+        <h6 class="nCommande" *ngIf="data.isPaid"><span>Statut du paiement :</span> Payé </h6>
+        <h6 class="nCommande" *ngIf="!data.isPaid"><span>Statut du paiement :</span> Non Payé </h6>
+        <div class="item" *ngFor="let item of data.chariotItems">
+            <div class="imageProduct">
+                <img src="{{item.product.imageCover}}" >
+            </div>
+            <div class="leReste">
+                
+                <div class="detailsProduct">
+                    <div class="nameRating">
+                        <h4 class="name">{{item.product.title}}</h4>
+                        <h4 class="rating"><i class="fa-solid fa-star"></i> {{item.product.ratingsAverage}} </h4>
+                    </div>
+                    <div class="semilardetails">
+                        
+                        
+                        <h6 class="details">Quantité : <span>{{item.quantity}}</span></h6>
+                    </div>
+                   
+                </div>
+            </div>
+            
+
+        </div>
+       
+            
+        <div class="priceStatus">
+            <h6 class="prixtotal">{{data.totalCommandePrice}}$</h6>
+            <h6 class="nCommande livstatus" *ngIf="data.isDelivered"><span>Statut :</span> Livré</h6>
+            <h6 class="nCommande livstatus" *ngIf="!data.isDelivered"><span>Statut :</span>Non livré</h6>
+        </div>
+    </div>
+    <nz-pagination
+       [nzPageIndex]="currentPage"
+       [nzPageSize]="pageSize"
+       (nzPageIndexChange)="changePage($event)"
+       [nzTotal]="totalItems"
+        ></nz-pagination>
+</div>

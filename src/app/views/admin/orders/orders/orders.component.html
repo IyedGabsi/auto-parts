@@ -1,0 +1,53 @@
+<nz-descriptions style="margin-bottom: 10px;" *ngFor="let data of paginatedData;index as i"  nzBordered class="custom-descriptions" >
+    <nz-descriptions-item nzTitle="Prix Total"><span class="wadhah">€ {{data.totalCommandePrice}}</span></nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Méthode de paiement">{{data.paymentMethodType}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Client">{{data.user.email}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Temps de commande">{{data.createdAt}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Temps de paiement" [nzSpan]="2">
+      {{data.paidAt}}
+    </nz-descriptions-item>
+    <nz-descriptions-item *ngIf="data.isDelivered" nzTitle="Status" [nzSpan]="3">
+      <span class="wadhah">Livré<button style="font-size: .9rem;margin-left: 3%;" nz-button (click)="showModal()" nzSize="small" nzType="default">Changer</button></span>
+    </nz-descriptions-item>
+    <nz-descriptions-item *ngIf="!data.isDelivered" nzTitle="Status" [nzSpan]="3">
+        <span class="wadhah">Non Livré <button style="font-size: .9rem;margin-left: 3%;" nz-button (click)="showModal()" nzSize="small" nzType="default">Changer</button></span>
+      </nz-descriptions-item>
+    
+   
+    <nz-descriptions-item nzTitle="Adresse de livraison" [nzSpan]="3">
+      Alias:  <span class="wadhah">{{data.shippingAdress.alias}}</span>
+      <br />
+      City: <span class="wadhah">{{data.shippingAdress.city}}</span>
+      <br />
+      Rue: <span class="wadhah">{{data.shippingAdress.details}}</span>
+      <br />
+      Code Postal: <span class="wadhah">{{data.shippingAdress.postalCode}}</span>
+      <br />
+      Téléphone: <span class="wadhah">{{data.shippingAdress.phone}}</span>
+     
+    </nz-descriptions-item>
+    <nz-descriptions-item  nzTitle="Les Articles de panier" [nzSpan]="3"></nz-descriptions-item>
+    <nz-descriptions-item *ngFor="let item of data.chariotItems;index as i" nzTitle="Article {{i+1}}" >
+        Nom :  <span class="wadhah"><a (Click)="getProduct(item.product._id)" >{{item.product.title}}</a></span>
+        <br />
+        Quantité : <span class="wadhah">{{item.quantity}}</span>
+        <br />
+        Prix Unitaire : <span class="wadhah">€ {{item.price}}</span>
+    </nz-descriptions-item>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Modifier Informations personnelles" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm(data._id,i)">
+      <ng-container *nzModalContent>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Status" [(ngModel)]="selectedValue">
+          <nz-option nzLabel="Non Livré" nzValue="false"></nz-option>
+          <nz-option nzLabel="Livré" nzValue="true"></nz-option>
+        </nz-select>
+      </ng-container>
+    </nz-modal>
+  </nz-descriptions>
+  <nz-pagination
+  [nzPageIndex]="currentPage"
+  [nzPageSize]="pageSize"
+  (nzPageIndexChange)="changePage($event)"
+  [nzTotal]="totalItems"
+   ></nz-pagination>
+
+  

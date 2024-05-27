@@ -1,0 +1,19 @@
+<div class="pageC">
+    <div class="verifregisterContent">
+        <h2>Verifier votre Email</h2>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="getCodeErrorMessage()">
+                  <nz-input-group >
+                    <input type="text" nz-input formControlName="resetCode" placeholder="Code (6 chiffres)" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            
+            
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Send Code</button>
+            
+          </form>
+            
+    </div>
+</div>

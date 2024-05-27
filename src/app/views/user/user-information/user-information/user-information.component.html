@@ -1,0 +1,89 @@
+<div class="pageContent">
+    <div class="deleteButtn">
+      <a nz-button style="color: red;" nzType="text" (click)="showDeleteConfirm()" nzDanger>Supprimer profil   <i class="fa-solid fa-trash"></i></a>
+    </div>
+    <div class="item" >
+        <div class="leReste">
+            
+                <div class="deleteModify">
+                    <a (click)="showModal()" class="update"><i class="fa-solid fa-pen-to-square"></i></a>
+                    
+                </div>
+            
+            <div class="detailsProduct">
+                <h4 class="title">Nom : <span> {{listOfData.name}} </span></h4>
+                <div class="semilardetails">
+                    <h6 class="details">Téléphone : <span>{{listOfData.phone}} </span></h6>
+                    <h6 class="details">E-mail : <span>{{listOfData.email}} </span></h6>
+                </div>
+                
+            </div>
+        </div>
+        
+
+    </div>
+    <div class="change-password">
+        <h2>Changer votre mot de passe</h2>
+    <form nz-form [formGroup]="validateForme" class="login-form" (ngSubmit)="submitForme()">
+        <nz-form-item>
+            <nz-form-control [nzErrorTip]="getCurrentPasswordErrorMessage()">
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input formControlName="currentPassword" placeholder="Mot de passe actuel" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control [nzErrorTip]="getPasswordErrorMessage()">
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input formControlName="password" placeholder="Mot de passe" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+              <nz-form-control [nzErrorTip]="errorTpl">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="confirmPassword" placeholder="Confirmez le mot de passe" />
+                  <ng-template #errorTpl let-control>
+                      @if (control.errors?.['required']) {
+                        Please confirm your password!
+                      }
+                      @if (control.errors?.['confirm']) {
+                        Two passwords that you enter is inconsistent!
+                      }
+                    </ng-template>
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Changer</button>
+    
+  </form>
+    </div>
+
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Modifier Informations personnelles" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm()">
+        <ng-container *nzModalContent>
+          <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="getNameErrorMessage()">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="name" placeholder="Username" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+
+              <nz-form-item>
+                  <nz-form-control [nzErrorTip]="getPhoneErrorMessage()">
+                    <nz-input-group nzPrefixIcon="phone">
+                      <input type="number" nz-input formControlName="phone" placeholder="Numéro de téléphone (8 chiffres)" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              
+            </form>
+        </ng-container>
+      </nz-modal>
+    
+</div>

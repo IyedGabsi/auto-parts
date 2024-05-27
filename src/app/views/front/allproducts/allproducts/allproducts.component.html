@@ -1,0 +1,172 @@
+<nz-layout class="layout">
+    <nz-sider nzCollapsible nzBreakpoint="lg" nzTheme="light" [nzCollapsedWidth]="0" class="custom-sidebar">
+     
+      <ul nz-menu  nzMode="inline" style="background: #E6E6FA;border-right: var(--lightcolor1);box-shadow: 0 10px 20px rgba(0,0,0,.2);padding-top: 30px;border-radius: 5px;">
+        <div class="slect">
+            <nz-select style="margin-bottom: 2px;" nzMode="tags" nzPlaceHolder="Marque de Piece" [(ngModel)]="listOfTagMarques" (ngModelChange)="addPieceMarqueFilter()">
+                <nz-option *ngFor="let option of listOfMarque" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+              </nz-select>
+              <!-- <button nz-button nzType="dashed" nzSize="small" (click)="addPieceMarqueFilter()">OK</button> -->
+              <nz-slider  [nzMin]="1"  (nzOnAfterChange)="addPriceRangeFilter($event)" [nzMax]="10000" nzRange [(ngModel)]="value2" ></nz-slider>
+        <div class="sliderInputs">
+          <nz-input-number
+          [nzMin]="1"
+          [nzMax]="10000"
+          (ngModelChange)="updateSlider()"
+          (nzBlur)="addPriceRangeFilter()"
+          [(ngModel)]="value2[0]"
+        ></nz-input-number>
+        <nz-input-number
+          [nzMin]="2"
+          [nzMax]="10000"
+          [ngStyle]="{ marginLeft: '16px' }"
+          [(ngModel)]="value2[1]"
+          (nzBlur)="addPriceRangeFilter()"
+          (ngModelChange)="updateSlider()"
+        ></nz-input-number>
+        </div>
+        </div>
+        <li nz-menu-item>
+           
+        </li>
+        <li nz-submenu nzTitle="Trier par" nzIcon="sort-ascending" [ngStyle]="{ 'background-color': '#E6E6FA'}" >
+          <ul >
+            
+            <li nz-menu-item><label nz-checkbox [(ngModel)]="mostSelled" (ngModelChange)="applyMostSelled()">plus demandé</label></li>
+            <li nz-menu-item><label nz-checkbox [(ngModel)]="creatAt" (ngModelChange)="applyCreatAtSort()">Nouvel arrivage</label></li>
+            <li nz-submenu nzTitle="Prix">
+              <ul style="background-color: var(--lightcolor1);">
+                <nz-radio-group [(ngModel)]="radioValue" (ngModelChange)="applyPriceSort()">
+                <li nz-menu-item>
+                  
+                  <label nz-radio nzValue="ass">Croissant</label>
+                 
+                  </li>
+                <li nz-menu-item> <label nz-radio nzValue="des">décroissant</label></li>
+              </nz-radio-group>
+              </ul>
+            </li>
+            <li nz-menu-item><label nz-checkbox [(ngModel)]="ratingSort" (ngModelChange)="applyRatingSort()">Mieux Noté</label></li>
+          </ul>
+        </li>
+        <li nz-menu-item>
+          <span nz-icon nzType="car"></span>
+          <span>Model de Voiture</span>
+        </li>
+        <div class="slect">
+          <nz-select style="margin-bottom: 5px;" nzShowSearch nzAllowClear nzPlaceHolder="Marque de Voiture" [(ngModel)]="selectedVehicMarque" (ngModelChange)="addVehicMarqueFilter()" >
+            <nz-option *ngFor="let i of marques" nzLabel="{{i.name}}" nzValue="{{i._id}}"></nz-option>
+          </nz-select>
+          <nz-select style="margin-bottom: 5px;" nzShowSearch nzAllowClear nzPlaceHolder="Model de Voiture" [(ngModel)]="selectedSousMarque"  >
+            <nz-option *ngFor="let j of sousmarques" nzLabel="{{j.name}}" nzValue="{{j._id}}"></nz-option>
+          </nz-select>
+          <button style="margin-bottom: 5px;" nz-button nzType="dashed" nzSize="small" (click)="addModelDeVoitureFilter()">OK</button>
+        </div>
+        
+      </ul>
+    </nz-sider>
+    <nz-layout style="background-color: var(--lightcolor1);">
+      <nz-header><ul nz-menu style="background-color: var(--lightcolor1);padding-left: 20%;" nzMode="horizontal">
+       
+        <li *ngFor="let data of vehicTypes" nz-submenu nzPlacement="bottomRight" nzTitle="{{data.name}}"(nzOpenChange)="onSubMenuOpen($event,data._id)">
+          <ul style="background-color: #fff;">
+            <li style="background-color: #fff;" *ngFor="let item of categories" nz-submenu nzTitle="{{item.name}}" (nzOpenChange)="onCategorieOpen($event,item._id)">
+              <ul style="background-color: #fff;" class="optionsList">
+                <li style="background-color: #fff;" *ngFor="let piece of piecetypes;index as i"  nz-menu-item (click)="handleItemClick($event,piece._id)" >{{piece.name}}</li>
+                
+                <!-- <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li>
+                <li  nz-menu-item> hello world</li> -->
+
+              </ul>
+            </li>
+           
+          </ul>
+        </li>
+      </ul></nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <nz-empty *ngIf="totalProducts==0" [nzNotFoundContent]="'Aucun produit.'"></nz-empty>
+          <div class="all-products" *ngIf="totalProducts>0">
+            <a (click)="getProductId(product._id)" routerLink="/productDetails" class="productDetails" *ngFor="let product of products;index as i" >
+              <div class="productCard">
+               
+                <img src={{product.imageCover}}>
+              
+                  <div class="textContent">
+                      <div class="rating" *ngIf="product.ratingsAverage>=1 && product.ratingsAverage<2">
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                      </div>
+                      <div class="rating" *ngIf="product.ratingsAverage>=2 && product.ratingsAverage<3">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </div>
+                      <div class="rating" *ngIf="product.ratingsAverage>=3 && product.ratingsAverage<4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </div>
+                      <div class="rating" *ngIf="product.ratingsAverage>=4 && product.ratingsAverage<5">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="rating" *ngIf="product.ratingsAverage===5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h5  class="price" *ngIf="product.priceAfterDiscount"><span >${{product.price}}</span> ${{product.priceAfterDiscount}}</h5>
+                        <h5  class="price" *ngIf="!product.priceAfterDiscount"> ${{product.price}}</h5>
+                  </div>
+                  <h4 class="name">{{product.title}}</h4>
+                  <p class="discription" >{{product.description}}</p>
+                  <div class="button-container" (click)="$event.stopPropagation()">
+                    <label class="favorite-checkbox">
+                      <input type="checkbox" [checked]="isProductInWishlist(product._id)" (change)="toggleFavorite($event,i)">
+                      <i nz-icon nzType="heart" [nzTheme]="isProductInWishlist(product._id) ? 'fill' : 'outline'"   [@heartSizeChange]="isProductInWishlist(product._id) ? 'fill' : 'outline'"></i>
+                    </label>
+                      <a  class="btn" (click)="addToCart(product._id)">Ajouter<i class="fa-solid fa-cart-shopping"></i></a>
+                  </div>
+              </div>
+          </a>
+          </div>
+           <div class="Ppagination">
+            <nz-pagination 
+            [nzPageIndex]="currentPage"
+            [nzPageSize]="pageSize"
+            (nzPageIndexChange)="changePage($event)"
+            [nzTotal]="totalProducts"
+            nzShowQuickJumper>
+          </nz-pagination>
+           </div>
+        </div>
+      </nz-content>
+      <!-- <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> -->
+    </nz-layout>
+  </nz-layout>

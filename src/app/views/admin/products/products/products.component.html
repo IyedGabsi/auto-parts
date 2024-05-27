@@ -1,0 +1,166 @@
+<div class="searchbarr">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton" style="width: 250px;margin-bottom: 20px;">
+        <input type="text" [(ngModel)]="keyword" nz-input placeholder="input search text" />
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button nz-button nzType="primary" (click)="search()" nzSearch><span nz-icon nzType="search"></span></button>
+      </ng-template>
+</div>
+    <nz-empty *ngIf="totalProducts==0" [nzNotFoundContent]="'Aucun produit.'"></nz-empty>
+          <div class="productss" *ngIf="totalProducts>0">
+            <a (click)="getProductId(product._id)" routerLink="/productDetails" class="productDetails" *ngFor="let product of products;index as i" >
+              <div class="productCard">
+               
+                <img src={{product.imageCover}}>
+              
+                  <div class="textContent">
+                      <div class="rating" *ngIf="product.ratingsAverage>=1 && product.ratingsAverage<2">
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                          <i class="fa-regular fa-star"></i>
+                      </div>
+                      <div class="rating" *ngIf="product.ratingsAverage>=2 && product.ratingsAverage<3">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </div>
+                      <div class="rating" *ngIf="product.ratingsAverage>=3 && product.ratingsAverage<4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </div>
+                      <div class="rating" *ngIf="product.ratingsAverage>=4 && product.ratingsAverage<5">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="rating" *ngIf="product.ratingsAverage===5">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h5  class="price" *ngIf="product.priceAfterDiscount"><span >${{product.price}}</span> ${{product.priceAfterDiscount}}</h5>
+                        <h5  class="price" *ngIf="!product.priceAfterDiscount"> ${{product.price}}</h5>
+                  </div>
+                  <h4 class="name">{{product.title}}</h4>
+                  <p class="discription" >{{product.description}}</p>
+                  <div class="button-container" (click)="$event.stopPropagation()">
+                    <button nz-button style="margin-left: 15px;" nzType="primary" nzShape="circle" (click)="deleteProduct(product._id,i)"><span nz-icon nzType="delete"></span></button>
+                    <button nz-button nzType="default"><span nz-icon nzType="edit" (click)="showModal(product._id,product.title,product.price,product.quantity,product.description,product.imageCover,product.images,i)"></span></button>
+                  </div>
+              </div>
+          </a>
+          </div>
+          <div class="Ppagination">
+            <nz-pagination 
+            [nzPageIndex]="currentPage"
+            [nzPageSize]="pageSize"
+            (nzPageIndexChange)="changePage($event)"
+            [nzTotal]="totalProducts"
+            nzShowQuickJumper>
+          </nz-pagination>
+           </div>
+
+           <nz-modal [(nzVisible)]="isVisible" nzTitle="Modifier le produit" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm(validateForm)">
+            <ng-container *nzModalContent>
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)">
+  
+                    <nz-form-item>
+                      <nz-form-label [nzSpan]="5" nzFor="imageCover" nzRequired>Couverture</nz-form-label>
+                        <nz-form-control [nzSpan]="12">
+                          <nz-upload
+                    class="avatar-uploader"
+                    [nzShowUploadList]="false"
+                    nzListType="picture-card"
+                    (nzChange)="handleChange($event)"
+                  >
+                    <ng-container *ngIf="!avatarUrl && !productData.imageCover">
+                      <span class="upload-icon" nz-icon [nzType]="'plus'"></span>
+                      <div class="ant-upload-text">Upload</div>
+                    </ng-container>
+                    <img *ngIf="productData.imageCover && !avatarUrl" [src]="productData.imageCover" style="width: 100%" />
+                    <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+                  </nz-upload>
+                      </nz-form-control>
+                    </nz-form-item>
+                  
+                    <nz-form-item>
+                      <nz-form-label [nzSpan]="5" nzFor="title" >Images</nz-form-label>
+                        <nz-form-control [nzSpan]="12" >
+                          <div class="clearfix">
+                            <nz-upload 
+                              nzListType="picture-card"
+                              [(nzFileList)]="fileList"
+                              [nzShowButton]="fileList.length < 8"
+                              [nzPreview]="handlePreview"
+                              (nzChange)="handleChang($event)"
+                              
+                            >
+                              <div>
+                                <span nz-icon nzType="plus"></span>
+                                <div style="margin-top: 8px">Images</div>
+                              </div>
+                            </nz-upload>
+                            <nz-modal
+                              [nzVisible]="previewVisible"
+                              [nzContent]="modalContent"
+                              [nzFooter]="null"
+                              (nzOnCancel)="previewVisible = false"
+                            >
+                              <ng-template #modalContent>
+                                <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                              </ng-template>
+                            </nz-modal>
+                          </div>
+                      
+                      </nz-form-control>
+                    </nz-form-item>
+                  
+                    <nz-form-item>
+                      <nz-form-label [nzSpan]="5" nzFor="title" nzRequired>Nom</nz-form-label>
+                        <nz-form-control [nzSpan]="12" nzErrorTip="Le Nom de produit est requis!">
+                          <input formControlName="title" [(ngModel)]="productData.title" nz-input placeholder="Nom.." nzSize="default" />
+                      </nz-form-control>
+                    </nz-form-item>
+                    
+                    <nz-form-item>
+                      <nz-form-label [nzSpan]="5" nzRequired nzFor="price">Prix</nz-form-label>
+                      <nz-form-control [nzSpan]="12" nzErrorTip="Le prix est requis!">
+                        <nz-input-number  formControlName="price" [(ngModel)]="productData.price" [nzMin]="1" [nzStep]="1"></nz-input-number>
+                      </nz-form-control>
+                    </nz-form-item>
+                  
+                    <nz-form-item>
+                      <nz-form-label [nzSpan]="5" nzRequired nzFor="quantity">Quantité</nz-form-label>
+                      <nz-form-control [nzSpan]="12" nzErrorTip="La Quantité est requise!">
+                        <nz-input-number  formControlName="quantity" [(ngModel)]="productData.quantity" [nzMin]="1" [nzStep]="1"></nz-input-number>
+                      </nz-form-control>
+                    </nz-form-item>
+                  
+                    <nz-form-item>
+                      <nz-form-label [nzSpan]="5" nzRequired nzFor="description">Description</nz-form-label>
+                      <nz-form-control [nzSpan]="12" nzErrorTip="La Description est requise!">
+                        <textarea
+                        formControlName="description"
+                        nz-input
+                        [(ngModel)]="productData.description"
+                        placeholder="Description..."
+                        [nzAutosize]="{ minRows: 2, maxRows: 7 }"
+                      ></textarea>
+                      </nz-form-control>
+                    </nz-form-item>
+                  
+                    
+                  </form>
+            </ng-container>
+          </nz-modal>

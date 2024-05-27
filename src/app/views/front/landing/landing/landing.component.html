@@ -1,0 +1,138 @@
+<!-- <img src="../../../../../assets/images/imgCarousel6.png"> -->
+<section class="homme">
+  <div class="leftside">
+    <ul nz-menu nzMode="inline" style="border-radius: .2rem;">
+      <li *ngFor="let vt of vehicTypes" nz-menu-item (click)="getVehicTypeId(vt._id)" >{{vt.name}}</li>
+      
+    </ul>
+  </div>
+  <div class="carousell">
+    <nz-carousel nzAutoPlay>
+      @for (index of array; track index) {
+        <div nz-carousel-content>
+          <img src="{{index}}" >
+        </div>
+      }
+    </nz-carousel>
+  </div>
+  <div class="rightside"></div>
+</section>
+
+<section  class="nouvelArrivage">
+    
+  <div class="content">
+    <div class="sec-head">
+      <h4 class="title">Nouvel Arrivage</h4>
+      <a nz-button nzType="link" (click)="goToNouvelArrivage()">VOIR PLUS <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="products">
+      <a (click)="getProductId(data._id)" routerLink="/productDetails" class="productDetails" *ngFor="let data of lastCreatedProducts;index as i" >
+        <div class="productCard">
+         
+          <img src={{data.imageCover}}>
+            <div class="textContent">
+                <div class="rating" *ngIf="data.ratingsAverage>=1 && data.ratingsAverage<2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="data.ratingsAverage>=2 && data.ratingsAverage<3">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="data.ratingsAverage>=3 && data.ratingsAverage<4">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="data.ratingsAverage>=4 && data.ratingsAverage<5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  </div>
+                  <div class="rating" *ngIf="data.ratingsAverage===5">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                  </div>
+                  <h5  class="price" *ngIf="data.priceAfterDiscount"><span >${{data.price}}</span> ${{data.priceAfterDiscount}}</h5>
+                  <h5  class="price" *ngIf="!data.priceAfterDiscount"> ${{data.price}}</h5>
+            </div>
+            <h4 class="name">{{data.title}}</h4>
+            <p class="discription" >{{data.description}}</p>
+        </div>
+    </a>
+    </div>
+  </div>
+</section>
+<section  class="mostSold">
+    
+  <div class="content">
+    <div class="sec-head">
+      <h4 class="title">Les plus demandés</h4>
+      <a nz-button nzType="link" (click)="goToMostSelled()">VOIR PLUS <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="products">
+      <a (click)="getProductId(data._id)" routerLink="/productDetails" class="productDetails" *ngFor="let data of mostSelledProducts;index as i" >
+        <div class="productCard">
+         
+          <img src={{data.imageCover}}>
+            <div class="textContent">
+                <div class="rating" *ngIf="data.ratingsAverage>=1 && data.ratingsAverage<2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="data.ratingsAverage>=2 && data.ratingsAverage<3">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="data.ratingsAverage>=3 && data.ratingsAverage<4">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="data.ratingsAverage>=4 && data.ratingsAverage<5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  </div>
+                  <div class="rating" *ngIf="data.ratingsAverage===5">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                  </div>
+                  <h5  class="price" *ngIf="data.priceAfterDiscount"><span >${{data.price}}</span> ${{data.priceAfterDiscount}}</h5>
+                  <h5  class="price" *ngIf="!data.priceAfterDiscount"> ${{data.price}}</h5>
+            </div>
+            <h4 class="name">{{data.title}}</h4>
+            <p class="discription" >{{data.description}}</p>
+        </div>
+    </a>
+    </div>
+  </div>
+</section>
+
+<script src="../../../../../assets/js/app.js"></script>

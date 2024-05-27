@@ -1,0 +1,42 @@
+
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle={{modalTitle}}
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="submitForm(validateForm)"
+    [nzOkLoading]="isOkLoading"
+    [nzOkDisabled]="!validateForm.valid"
+  >
+    <ng-container *nzModalContent class="custom-modalContent">
+      
+        <form #f="ngForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)">
+            <nz-form-item >
+                
+                <nz-form-control [nzSpan]="14" >
+                  <nz-upload
+  class="avatar-uploader"
+  [nzShowUploadList]="false"
+  nzListType="picture-card"
+  (nzChange)="handleChange($event)"
+>
+  <ng-container *ngIf="!avatarUrl">
+    <span class="upload-icon" nz-icon [nzType]="'plus'"></span>
+    <div class="ant-upload-text">Upload</div>
+  </ng-container>
+  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+</nz-upload>
+
+                </nz-form-control>
+              </nz-form-item>
+              
+            <nz-form-item >
+              
+              <nz-form-control [nzSpan]="14" [nzErrorTip]="getNameErrorMessage()">
+                <input nz-input [(ngModel)]="itemData.name" placeholder="Marque" formControlName='name' type="text" id="name" />
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+          
+    </ng-container>
+
+  </nz-modal>

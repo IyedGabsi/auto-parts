@@ -1,0 +1,79 @@
+<nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" class="my-custom-sidebar">
+      <br>
+      <br>
+      <ul nz-menu nzTheme="dark" nzMode="inline" class="my-custom-menu " >
+        <li nz-menu-item  routerLink="/user/informations" *ngIf="this.as.loggedIn() && !this.as.adminloggedIn()">
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          <span>{{name}}</span>
+        </li>
+        <li nz-menu-item  routerLink="/admin/orders" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="container" nzTheme="outline"></span>
+          <span>Commandes</span>
+        </li>
+        <li nz-menu-item (nzClick)="navigateToTeams()" routerLink="/admin/users" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="team"></span>
+          <span>Users</span>
+        </li>
+        <li nz-menu-item (nzClick)="navigateToUsers()" routerLink="/admin/marques" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="appstore" nzTheme="outline"></span>
+          <span>Marques</span>
+        </li>
+        <li nz-menu-item (nzClick)="navigateToUsers()" routerLink="/admin/piecetypes" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="appstore" nzTheme="outline"></span>
+          <span>Type de piece</span>
+        </li>
+        <li nz-menu-item  routerLink="/admin/products" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="appstore-add"></span>
+          <span>Les Produits</span>
+        </li>
+        <li nz-menu-item  routerLink="/admin/addProduct" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="appstore-add"></span>
+          <span>Ajouter Produit</span>
+        </li>
+        
+        
+        <li nz-menu-item  routerLink="/user/cart" *ngIf="this.as.loggedIn() && !this.as.adminloggedIn()">
+          <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+          <span>Chariot</span>
+        </li>
+        <li nz-menu-item  routerLink="/user/addresses" *ngIf="this.as.loggedIn() && !this.as.adminloggedIn()">
+          <span nz-icon nzType="environment" nzTheme="fill"></span>
+          <span>Coordonnées</span>
+        </li>
+        <li nz-menu-item  routerLink="/user/wishList" *ngIf="this.as.loggedIn() && !this.as.adminloggedIn()">
+          <span nz-icon nzType="heart" nzTheme="fill"></span>
+          <span>Liste de souhaits</span>
+        </li>
+        <li nz-menu-item  routerLink="/user/commandes" *ngIf="this.as.loggedIn() && !this.as.adminloggedIn()">
+          <span nz-icon nzType="container" nzTheme="outline"></span>
+          <span>Commandes</span>
+        </li>
+        
+      </ul>
+      
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="header-content">
+
+          <span
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            (click)="isCollapsed = !isCollapsed"
+          ></span>
+          <button nz-button nzType="default" nzShape="circle" (click)="logout()"><span nz-icon nzType="logout" nzTheme="outline"></span></button>
+        </div>
+      </nz-header>
+      <nz-content>
+        <!-- <nz-breadcrumb>
+          <nz-breadcrumb-item>User</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+        </nz-breadcrumb> -->
+        <div class="inner-content">  <router-outlet></router-outlet>  </div>
+      </nz-content>
+      <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+    </nz-layout>
+  </nz-layout>
+

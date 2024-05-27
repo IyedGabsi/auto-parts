@@ -1,0 +1,41 @@
+<nav>
+    <div class="content">
+        <div class="head-menuu">
+            <ul style="background-color: #4143A2; border-bottom: #4143A2;margin: 0;" nz-menu nzMode="horizontal" >
+                <li style="background-color: #4143A2;font-size: 2.5rem;color: #fff;margin: 0;" nz-submenu  nzIcon="menu" (nzOpenChange)="getVehiculTypes($event)">
+                    
+                    <ul>
+                        <li *ngFor="let v of vehicTypes" nz-submenu nzTitle="{{v.name}}" (nzOpenChange)="getCategories($event,v._id)">
+                            <ul>
+                              <li *ngFor="let c of categories" nz-submenu nzTitle="{{c.name}}" (nzOpenChange)="getPieceTypes($event,c._id)">
+                                <ul>
+                                    <li *ngFor="let p of pieceTypes" nz-menu-item  (click)="getIds(p._id,c._id,v._id)"> {{p.name}} </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                    </ul>
+                  </li>
+                
+            </ul>
+           
+            <a routerLink="/"><h2>Auto<span>Parts</span></h2></a>
+        </div>
+        <div class="boxContainer">
+            
+          <nz-input-group [nzSuffix]="suffixIconButton"  >
+            <input type="text" [(ngModel)]="searchKeyword" nz-input placeholder="Recherche par nom de produit." />
+          </nz-input-group>
+                  <ng-template #suffixIconButton>
+                    <button nz-button nzType="text" (click)="search()" nzSearch><span nz-icon nzType="search"></span></button>
+                  </ng-template>
+            
+        </div>
+        <ul id="getMenu">
+            <li><a routerLink="/allproducts"><i class="fa-solid fa-shop"></i>   Magasin</a></li>
+            <li><a routerLink="/user/cart"><i class="fa-solid fa-cart-shopping"></i>   Chariot</a></li>
+            <li><a routerLink="/user"><i class="fa-regular fa-user"></i>   Profil</a></li>
+        </ul>
+    </div>
+</nav>
+

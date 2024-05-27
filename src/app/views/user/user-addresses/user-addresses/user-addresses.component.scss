@@ -1,0 +1,85 @@
+.pageContent{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+
+.pageContent .item{
+    /* height: 150px; */
+    border-radius: .6rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    
+    margin-bottom: 1.2rem;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.leReste {
+    width: 100%;
+}
+.align-right{
+    text-align: right;
+}
+.deleteModify{
+    display: flex;
+    justify-content: end;
+}
+.leReste .delete{
+    color: var(--bgColor-5);
+    font-size: 1.3rem;
+    transition: .4s;
+}
+.leReste .delete:hover{
+    color: red;
+    font-size: 1.3rem;
+}
+.leReste .update{
+    margin-right: 1rem;
+    color: var(--bgColor-5);
+    font-size: 1.3rem;
+    transition: .4s;
+}
+.leReste .update:hover{
+    color: rgb(6, 190, 6);
+    font-size: 1.3rem;
+}
+.pageContent .item .detailsProduct{
+    
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.title{
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+    color: var(--primarycolor)
+}
+.pageContent .item .detailsProduct .nameRating .rating{
+    font-size: .9rem;
+    color: var(--primarycolor);
+}
+.detailsProduct .semilardetails .details{
+    color: var(--darkColor);
+    font-size: .9rem;
+    font-weight:500;
+}
+.detailsProduct .semilardetails .details span{
+    color: var(--bgColor-5);
+    font-size: .9rem;
+    font-weight:600;
+}
+
+.addButton{
+    font-size: 14px;
+    // max-width: 110px;
+}

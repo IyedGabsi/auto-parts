@@ -1,0 +1,26 @@
+.addProductContent{
+  padding-left: 5%;
+}
+
+nz-select {
+    max-width:390px;
+    // margin-bottom: 10px;
+  }
+ .ant-input {
+    max-width:390px;
+    margin: 0 8px 8px 0;
+  }
+.selectflex{
+  display: flex;
+  flex-direction: column;
+}
+.inputGroup{
+  display: flex;
+  
+}
+.labelInput{
+  width: 80px;
+}
+textarea + textarea {
+  margin-top: 24px;
+}

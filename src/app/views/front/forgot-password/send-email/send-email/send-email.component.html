@@ -1,0 +1,14 @@
+<h2>Mot de passe oublié</h2>
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="getEmailErrorMessage()">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="email" placeholder="Email" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Send Email</button>
+    
+  </form>

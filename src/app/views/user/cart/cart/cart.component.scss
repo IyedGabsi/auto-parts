@@ -1,0 +1,218 @@
+.titleVider{
+    display: flex;
+    justify-content: space-between;
+}
+.chariotContent .title{
+    color: var(--darkColor);
+    margin-bottom: 1.2rem;
+    font-size: 2rem;
+}
+.chariotContent .order{
+    display: flex;
+    justify-content: space-between;
+}
+.chariotContent .order .items{
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+/* .chariot .content .order .items .totale{
+    color: var(--darkColor);
+    text-align: right;
+    padding: 1rem;
+} */
+.chariotContent .order .items .item{
+    height: 350px;
+    border-radius:5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.imageProduct{
+  height: 100%;
+  width: 310px;
+  
+}
+.imageProduct img{
+    height: 100%;
+    width: 310px;
+    // object-fit: cover;
+    border-radius: .6rem;
+}
+.leReste {
+    width: 100%;
+}
+.align-right{
+    text-align: right;
+}
+.leReste .delete{
+    color: var(--bgColor-5);
+    font-size: 1.3rem;
+    transition: .4s;
+}
+.leReste .delete:hover{
+    color: red;
+    font-size: 1.3rem;
+}
+.chariotContent .order .items .item .detailsProduct{
+    
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.chariotContent .order .items .item .detailsProduct .nameRating{
+    
+    display: flex;
+    
+}
+
+  .detailsProduct .nameRating .name{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    color: var(--darkColor);
+}
+  .chariotContent .order .items .item .detailsProduct .nameRating .rating{
+    font-size: .9rem;
+    color: var(--primarycolor);
+}
+
+.detailsProduct .semilardetails .details{
+    color: var(--darkColor);
+    font-size: .9rem;
+    font-weight:500;
+}
+.detailsProduct .semilardetails .details span{
+    color: var(--bgColor-5);
+    font-size: .9rem;
+    font-weight:600;
+}
+.detailsProduct .updateQuantity{
+    display: flex;
+}
+.detailsProduct .updateQuantity h6{
+    color: var(--darkColor);
+    font-size: .9rem;
+    font-weight:500;
+    margin-right: .5rem;
+}
+.detailsProduct .updateQuantity .quantity{
+    background: #fdf1f1;
+    margin-right: .5rem;
+    border: none;
+    height: 20px;
+    width: 50px;
+    padding: 0px 5px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color:var(--darkColor);
+    
+}
+.detailsProduct .updateQuantity .quantity:focus{
+    outline: none;
+}
+.updateQuantity .btn{
+    background-color: var(--bgColor-5);
+  color:var(--lightColor);
+  font-size: 11px;
+  text-decoration:none;
+  font-weight: bold;
+  padding: 0.09rem .5rem;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  transition: 0.5s;
+}
+.updateQuantity .btn:hover{
+    background-color: transparent;
+    border: 2px solid var(--bgColor-5);
+    color:var(--bgColor-5);
+  }
+
+
+.chariotContent .order .buy{
+    width: 30%;
+    height: 350px;
+    border-radius:5px;
+    // box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+}
+
+
+.buy .totalPrice{
+    text-align: center;
+    
+   
+    
+    color: var(--darkColor);
+    font-size: 1.7rem;
+   
+    // background: ;
+    
+    border-radius: .6rem;
+   
+}
+.totalPrix{
+    text-align: center;
+    
+    color: var(--darkColor);
+    font-size: 1.7rem;
+   
+    // background: ;
+    
+    border-radius: .6rem;
+   
+
+}
+.totalPrix .mchateb{
+    text-decoration:line-through;
+    font-size: 1.5rem;
+    color: var(--bgColor-5);
+}
+.buy .acheter{
+    background-color: var(--primarycolor);
+    color:var(--lightColor);
+    
+    text-decoration:none;
+    font-weight: bold;
+    padding: 0.81rem 1.87rem;
+    border-radius: .6rem;
+    border: 2px solid transparent;
+    transition: 0.5s;
+}
+.buy .acheter:hover{
+    background-color: transparent;
+    color: var(--primarycolor);
+    border: 2px solid var(--primarycolor);
+}
+.align-center{
+    text-align: center;
+}
+.btn-customm{
+    height: 31.5px;
+   
+}
+.paginate-style{
+   text-align: right;
+   
+}
+[nz-radio] {
+    display: block;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  input {
+    width: 100px;
+    margin-left: 10px;
+  }

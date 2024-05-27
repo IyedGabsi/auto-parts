@@ -1,0 +1,18 @@
+<nz-upload
+class="avatar-uploader"
+nzAction="http://localhost:8000/marques"
+nzName="avatar"
+nzListType="picture-card"
+[nzShowUploadList]="false"
+
+[nzBeforeUpload]="beforeUpload"
+(nzChange)="handleChange($event)"
+>
+<ng-container *ngIf="!loading">
+  <span class="upload-icon" nz-icon nzType="plus"></span>
+  
+  <div class="ant-upload-text">Image</div>
+</ng-container>
+<nz-spin *ngIf="loading"></nz-spin>
+</nz-upload>
+

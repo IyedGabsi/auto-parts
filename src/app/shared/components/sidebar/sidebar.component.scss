@@ -1,0 +1,79 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+
+  nz-header {
+    background: var(--lightColor1);
+    padding: 0;
+  }
+
+  nz-content {
+    margin: 0 16px;
+    background: var(--lightColor1);
+  }
+
+  nz-breadcrumb {
+    margin: 16px 0;
+  }
+
+  .inner-content {
+    
+    padding: 24px;
+    background: var(--lightColor1);
+    height: 100%;
+    min-height: 360px;
+    padding-top: 0;
+    // border-radius: 10px;
+    // box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  }
+
+  nz-footer {
+    text-align: center;
+    background: var(--secondaryColor);
+  }
+  .ant-layout {
+    background: var(--lightColor1);
+    min-height: 100vh; /* Or a fixed height if desired */
+  }
+  .my-custom-sidebar {
+    background: var(--lightColor1);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  }
+  .my-custom-menu {
+    background-color: var(--lightColor1);
+    color: var(--darkColor);
+    
+    font-weight:700;
+    font-size: medium;
+  }
+  .my-custom-menu .ant-menu-item {
+    color: var(--darkColor);
+    background: var(--lightColor1);
+  }
+  .black-link {
+    color: black; /* Set the text color to black */
+  }
+  .header-content{
+    display: flex;
+    justify-content: space-between;
+  }
+  [nz-button] {
+    margin-right: 20px;
+    margin-bottom: 12px;
+    margin-top: 12PX;
+  }
+ 
