@@ -32,7 +32,7 @@
   overflow: hidden;
 }
 .carousell img{
-  // object-fit: cover;
+
   width: 100%;
   height: 100%;
 }
@@ -43,9 +43,6 @@ h3 {
   user-select: none;
 }
 
-
-
-//hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 .nouvelArrivage{
     background-color: #7173bf ;
     width: 100%;
@@ -63,12 +60,10 @@ h3 {
     margin-bottom: .5rem;
   }
   .nouvelArrivage .productCard{
-    // padding: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     color: var(--darkColor);
     border-radius: .5rem;
     width: 230px;
-    // height: 400px;
     background-color: #F5F5F5;
     margin: 0 0 0 1.2rem;
     margin-bottom: 1rem;
@@ -77,11 +72,9 @@ h3 {
     transition: .3s;
   }
   .nouvelArrivage .productCard:hover{
-    // box-shadow: 0 10px 20px rgba(0,0,0,.2);
     box-shadow: 0 10px 20px rgba(0,0,0,.7);
   }
   .mostSold{
-    // background-color: #4143A2 ;
     width: 100%;
     padding-top: .8rem;
     padding-right: 7.5rem;
@@ -97,11 +90,11 @@ h3 {
   }
   .mostSold .productCard{
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    // padding: 10px;
+    
     color: var(--darkColor);
     border-radius: .5rem;
     width: 230px;
-    // height: 400px;
+   
     background-color: #F5F5F5;
     margin: 0 0 0 1.2rem;
     margin-bottom: 1rem;
@@ -141,11 +134,11 @@ h3 {
     
   }
   .productCard{
-    // padding: 10px;
+
     color: var(--darkColor);
     border-radius: .5rem;
     width: 230px;
-    // height: 400px;
+ 
     background-color: #F5F5F5;
     margin: 0 0 0 1.2rem;
     margin-bottom: 1rem;
@@ -154,19 +147,15 @@ h3 {
     transition: .3s;
   }
   .productCard:hover{
-    // box-shadow: 0 10px 20px rgba(0,0,0,.2);
+ 
     box-shadow: 0 5px 15px rgba(0,0,0,.7);
   }
   .productDetails{
-    // width: 230px;
+ 
     text-decoration: none;
     color: var(--darkColor);
   }
-//   .productCard .img-box{
-//     width: 100%;
-//     height: 100%;
-//     border-radius: .6rem;
-//   }
+
   .productCard  img{
     object-fit: cover;
     width: 100%;
@@ -176,8 +165,7 @@ h3 {
    
   }
   .productCard .textContent{
-    
-    // background-color: #cadafc;
+
     margin: 1rem ;
     margin-bottom: 0;
     display: flex;
@@ -208,8 +196,8 @@ h3 {
     height: 31px;
     max-height: 31px;
     min-height: 31px;
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Show ellipsis for overflow text */
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     white-space: nowrap;
 
   }
@@ -252,31 +240,10 @@ h3 {
   .favorite-checkbox i {
     margin-left: 10px;
     font-size: 24px;
-    color: var(--primarycolor); /* Change the color to your preferred color */
-    animation: dislike_effect 400ms ease;
-  }
-  .button-container .checkmark {
-    
-    top: 0;
-    left: 0;
-    height: 2em;
-    width: 2em;
-    transition: 100ms;
+    color: var(--primarycolor); 
     animation: dislike_effect 400ms ease;
   }
   
-  .button-container .container input:not(:checked) + .checkmark path {
-    stroke: var(--primarycolor); 
-}
- 
-  .button-container .container input:checked ~ .checkmark {
-    animation: like_effect 400ms ease;
-    
-  }
-  .button-container .container input:checked ~ .checkmark path {
-    fill: var(--primarycolor);
-    stroke-width: 0;
-  }
   .button-container .btn{
     background-color: var(--primarycolor);
     color:var(--lightColor);
@@ -293,35 +260,6 @@ h3 {
     border: 2px solid var(--primarycolor);
     color:var(--primarycolor);
 }
-  
-  
-  @keyframes like_effect {
-    0% {
-      transform: scale(0);
-    }
-  
-    50% {
-      transform: scale(1.2);
-    }
-  
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes dislike_effect {
-    0% {
-      transform: scale(0);
-    }
-  
-    50% {
-      transform: scale(1.2);
-    }
-  
-    100% {
-      transform: scale(1);
-    }
-  }
   .align-center{
     text-align: center;
   }
