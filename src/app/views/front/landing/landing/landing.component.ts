@@ -5,7 +5,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { ProductService } from '../../../services/product.service';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel'
 import { VehictypeService } from '../../../services/vehictype.service';
-
+import { Inject, PLATFORM_ID } from '@angular/core'
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-landing',
   standalone: true,
@@ -19,7 +20,7 @@ export class LandingComponent implements OnInit{
   vehicTypes:any=[]
   lastCreatedProducts:any=[]
   mostSelledProducts:any=[]
-  constructor(private router:Router,private ps:ProductService,private vts:VehictypeService){}
+  constructor(private router:Router,private ps:ProductService,private vts:VehictypeService,@Inject(PLATFORM_ID) private platformId: any){}
   
   ngOnInit(): void {
       this.getvehicTypes()
@@ -32,7 +33,10 @@ export class LandingComponent implements OnInit{
     })
   }
   getVehicTypeId(id:any){
+    if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('vehicTypeId',id)
+    }
+     
       this.router.navigate(['/allproducts'])
   }
   getNouvelArrivage(){

@@ -28,6 +28,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CartService } from '../../../services/cart.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Inject, PLATFORM_ID } from '@angular/core'
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-allproducts',
   standalone: true,
@@ -55,7 +57,8 @@ export class AllproductsComponent implements OnInit,OnDestroy {
   private subscription: Subscription;
   wishList:any=[]
   keyword='';
-  lvehicTypeId:any=localStorage.getItem('vehicTypeId')
+  
+  lvehicTypeId:any
   lcategorieId:any=localStorage.getItem('categorieId')
   lpieceTypeId:any=localStorage.getItem('pieceTypeId')
   lsort:any=localStorage.getItem('sort')
@@ -82,7 +85,7 @@ export class AllproductsComponent implements OnInit,OnDestroy {
   listOfTagMarques = [];
   selectedVehicMarque=null
   selectedSousMarque=null
-  constructor(private vts:VehictypeService, private pts:PieceTypeService,private cs:CartService,private ws:WishlistService,private messageService: NzMessageService ,private uds:UsersDataService ,private ps:ProductService,private ms:MarquesDataService,private router:Router,private ss:SearchService){
+  constructor(private vts:VehictypeService, private pts:PieceTypeService,private cs:CartService,private ws:WishlistService,private messageService: NzMessageService ,private uds:UsersDataService ,private ps:ProductService,private ms:MarquesDataService,private router:Router,private ss:SearchService,@Inject(PLATFORM_ID) private platformId: any){
     this.subscription = this.ss.getSearchKeyword().subscribe(keyword => {
       this.keyword = keyword;
      
@@ -100,6 +103,9 @@ export class AllproductsComponent implements OnInit,OnDestroy {
     this.getProducts(this.params,this.listOfTagMarques)
   }
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)){
+      this.lvehicTypeId=localStorage.getItem('vehicTypeId')
+    }
       this.getVehiculTypes()
       if(this.lpieceTypeId){
         this.params.piecetype=this.lpieceTypeId
