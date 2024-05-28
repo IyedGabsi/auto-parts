@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [NzInputModule, NzButtonModule, NzIconModule,RouterModule,NzMenuModule,CommonModule,NzSelectModule,FormsModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss','./header.component.less']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   menuSize='large'
