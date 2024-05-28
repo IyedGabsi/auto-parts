@@ -53,3 +53,171 @@ html{
     margin-bottom: 5px;
 }
 #menu:hover .menu-Bar{display: none;}
+//productDetails
+.productInformations{
+    width: 100%;
+    padding-top: 1.6rem;
+    padding-right: 7.5rem;
+    padding-left: 7.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.productImages{
+  width: 40%;
+  height: 600px;
+  
+  
+}
+#featured{
+  width: 100%;
+  height: 70%;
+  cursor: pointer;
+  border-radius: .4rem;
+}
+.productImages .thumbnail{
+    width: 120px;
+    height: 100px;
+    cursor: pointer;
+    opacity: 0.5;
+    margin: 5px;
+    border-radius: .4rem;
+    transition: .3s;
+  }
+  .productImages .thumbnail:hover{
+    opacity: 1;
+  }
+  .productImages .active{
+    opacity: 1;
+  }
+  .slide-wrapper{
+    max-width: 500px;
+    display: flex;
+    min-height: 100px;
+    align-items: center;
+  }
+  #slider{
+    width: 440px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+  }
+  .slide-wrapper button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    font-family: monospace;
+    color: var(--darkColor);
+    font-weight: bold;
+    font-size: large;
+    font-size: 1.3rem;
+    transition: .5s;
+    
+    margin-left: .6rem;
+    margin-right: .3rem;
+  }
+  .slide-wrapper button:hover{
+    background-color: var(--lightColor);
+    color: #555;
+  }
+  .productInformations .textContent{
+      width: 60%;
+      padding-left: 1.3rem;
+      padding-bottom: 7rem;
+      font-size: 1.2rem;
+      color: var(--darkColor);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+  .productInformations .textContent .rating{
+      color: var(--primarycolor);
+  }
+  .productInformations .textContent .price{
+    font-size: 1.5rem;
+
+  }
+  .productInformations .textContent .price .chateb{
+    text-decoration: line-through;
+    font-size: 1.3rem;
+    color: var(--bgColor-5);
+  }
+  .productInformations .textContent h4{
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+  }
+  .productInformations .textContent .marque{
+    font-weight: bold;
+  }
+  .productInformations .textContent h5 span{
+    
+    font-size: 0.7rem;
+  }
+  .productInformations .textContent p{
+    text-align: justify;
+  }
+  .productInformations .container input {
+      
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+.reviews{
+    width: 100%;
+    padding-top: 1.6rem;
+    padding-right: 7.5rem;
+    padding-left: 7.5rem;
+  }
+  .reviewInformations{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: .4rem;
+    
+}
+.wrapper{
+  margin-bottom: 1rem;
+}
+.wrapper h4{
+  color: var(--darkColor);
+  
+}
+.reviewInformations .rating{
+  color: var(--primarycolor);
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+}
+.reviewInformations .rating .star{
+  cursor: pointer;
+}
+.reviewInformations .rating .star:hover{
+  transform: scale(1.1);
+}
+.review{
+    padding-top: .9rem;
+    padding-bottom: 1rem;
+    color: var(--darkColor);
+    border-bottom: 2px solid var(--darkColor);
+    
+  }
+  .review .nameRating{
+    
+    display: flex;
+    
+  }
+  .review .nameRating .name{
+    margin-right: 1rem;
+  }
+  .review .nameRating .rating{
+    font-size: .9rem;
+  }  
+  .review p{
+    margin-bottom: 0;
+  }
