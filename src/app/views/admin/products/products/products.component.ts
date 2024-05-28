@@ -159,10 +159,18 @@ export class ProductsComponent implements OnInit {
       });
     }
   }
+  private getBase6(img: File, callback: (img: string) => void): void {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result!.toString()));
+    reader.readAsDataURL(img);
+  }
   handleChange(info: any): void {
     if (info.file.originFileObj) {
       this.selectedImageFile = info.file.originFileObj;
-      this.avatarUrl=info.file.thumbUrl
+      this.getBase6(info.file!.originFileObj!, (img: string) => {
+       
+        this.avatarUrl = img;
+      });
     }
   }
   getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>

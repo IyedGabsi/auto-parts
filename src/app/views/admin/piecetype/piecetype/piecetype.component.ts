@@ -102,11 +102,11 @@ export class PiecetypeComponent {
     
     this.isLoading = true;
     if(this.modalTitle==='Ajouter Une Marque'){
-        console.log(formData)
+        console.log('hiiiiiiiiiiiiiii')
       this.pts.addPieceType(formData).subscribe((data:any)=>{
         this.listOfData.push(data.data)
         this.results++; 
-        this.messageService.success('Marque added successfully!')
+        this.messageService.success('Type de piece ajouté !')
         this.isVisible = false;
         this.listOfTagCategories=[]
         form.reset();
@@ -122,7 +122,7 @@ export class PiecetypeComponent {
        this.pts.UpdatePieceType(formData,this.itemData.id).subscribe((data:any)=>{
         this.listOfData.splice(this.index,1,data.data)
     
-        this.messageService.success('marque updated successfuly')
+        this.messageService.success('Type de piece modifié')
         
         this.isVisible = false;
         form.reset();
@@ -142,13 +142,13 @@ export class PiecetypeComponent {
     this.getCategories()
     this.isVisible = true;
    
-    this.modalTitle='Ajouter Une Marque'
+    this.modalTitle='Ajouter Un type de piece'
   }
   showUpdateModal(id:any,name:any,categorie:any,i:any): void {
     this.getCategories()
     this.isVisible = true;
     console.log(categorie)
-    this.modalTitle='Modifier Marque'
+    this.modalTitle='Modifier Type de piece'
     this.itemData.id=id
     this.itemData.name=name
     this.index=i
@@ -168,11 +168,21 @@ export class PiecetypeComponent {
   loading = false;
   avatarUrl?: string;
  
+  private getBase64(img: File, callback: (img: string) => void): void {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result!.toString()));
+    reader.readAsDataURL(img);
+  }
   
   handleChange(info: any): void {
     if (info.file.originFileObj) {
       this.selectedImageFile = info.file.originFileObj;
-      this.avatarUrl=info.file.thumbUrl
+      console.log(info.file)
+      this.getBase64(info.file!.originFileObj!, (img: string) => {
+       
+        this.avatarUrl = img;
+      });
+      console.log(this.avatarUrl)
     }}
     delete(id: any, i: number) {
       this.pts.deletePieceType(id).subscribe((response:any)=> {

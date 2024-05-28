@@ -139,11 +139,18 @@ export class ModalComponent {
   loading = false;
   avatarUrl?: string;
  
-  
+  private getBase64(img: File, callback: (img: string) => void): void {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result!.toString()));
+    reader.readAsDataURL(img);
+  }
   handleChange(info: any): void {
     if (info.file.originFileObj) {
       this.selectedImageFile = info.file.originFileObj;
-      this.avatarUrl=info.file.thumbUrl
+      this.getBase64(info.file!.originFileObj!, (img: string) => {
+       
+        this.avatarUrl = img;
+      });
     }
   }
 
