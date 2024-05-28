@@ -1,17 +1,21 @@
 
   <section class="productInformations">
-      <div class="productImages">
-          <img id="featured"  src="{{productData.imageCover}}" >
-          <div class="slide-wrapper">
-            <button id="prev"><</button>
-              <div id="slider">
-                <img class="thumbnail active" src="{{productData.imageCover}}">
-                <img *ngFor="let data of productData.images;index as index" class="thumbnail" src="{{productData.images[index]}}">
-                
-                </div>
-              <button id="next">></button>
-              </div>
+    <div class="productImages">
+      <img id="featured" [src]="featuredImage" (click)="openImageModal()" />
+      <div class="slide-wrapper">
+        <button id="prev" (click)="scrollLeft()"><</button>
+        <div id="slider">
+          <img
+            *ngFor="let image of images"
+            class="thumbnail"
+            [class.active]="image === featuredImage"
+            [src]="image"
+            (mouseover)="onMouseOver(image)"
+          />
+        </div>
+        <button id="next" (click)="scrollRight()">></button>
       </div>
+    </div>
       <div class="textContent">
         <label class="container">
           <input type="checkbox">

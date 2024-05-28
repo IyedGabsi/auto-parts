@@ -55,6 +55,9 @@ export class ProductDetailsComponent implements OnInit{
   totalItems = 0; 
   currentPage = 1; 
   pageSize = 2
+
+  images:any=[] ;
+  featuredImage=''
   constructor(private ps:ProductService,private cs:CartService,private rs:ReviewService,private uds:UsersDataService,private ws:WishlistService,private messageService: NzMessageService,private as:AuthService,private router:Router){
     
   }
@@ -64,12 +67,36 @@ export class ProductDetailsComponent implements OnInit{
     }
     this.ps.getProduct(this.productId).subscribe((data:any)=>{
       this.productData=data.data
-     
+      this.featuredImage=this.productData.imageCover
+      this.images=this.productData.images
+      this.images.unshift(this.productData.imageCover)
       this.getRelatedProducts()
     })
     this.getReviewsItems()
      this.getLoggedUserData()
   }
+  onMouseOver(image: string): void {
+    this.featuredImage = image;
+  }
+
+  scrollLeft(): void {
+    const slider = document.getElementById('slider');
+    if (slider) {
+      slider.scrollLeft -= 180;
+    }
+  }
+
+  scrollRight(): void {
+    const slider = document.getElementById('slider');
+    if (slider) {
+      slider.scrollLeft += 180;
+    }
+  }
+
+  openImageModal(): void {
+    console.log('hhhh')
+  }
+
   getLoggedUserData(){
     this.uds.getLoggedUserData().subscribe((data:any)=>{
       this.wishList=data.data.wishList
