@@ -2,15 +2,11 @@
     min-height: 100vh;
     background-color: var(--lightColor1);
   }
-
   .logo {
     height: 32px;
     background: var(--lightColor1);
     margin: 16px;
   }
-  // .ant-layout-sider-children {
-  //   box-shadow: 0 10px 20px rgba(0,0,0,.2);
-  // }
   .slect{
      padding-left: 7px;
      padding-right: 7px;
@@ -32,8 +28,6 @@
   }
 
   .inner-content {
-    
-   
     background: #E6E6FA;
     min-height: 360px;
   }
@@ -66,17 +60,12 @@
 .ant-menu-submenu .ant-menu-sub {
   background-color: #E6E6FA;
 }
-
-
-
-
 .productCard{
-  // padding: 10px;
   background-color: #fff;
   color: var(--darkColor);
   border-radius: .6rem;
   width: 230px;
-  height: 400px;
+  height: 350px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   margin: 0 0 0 1.2rem;
   margin-bottom: 1rem;
@@ -92,11 +81,6 @@
   text-decoration: none;
   color: var(--darkColor);
 }
-//   .productCard .img-box{
-//     width: 100%;
-//     height: 100%;
-//     border-radius: .6rem;
-//   }
 .productCard  img{
   object-fit: cover;
   width: 100%;
@@ -106,9 +90,9 @@
  
 }
 .productCard .textContent{
-  
-  // background-color: #cadafc;
   margin: 1rem;
+  margin-top: 10px;
+  margin-bottom: 0;
   display: flex;
   justify-content:space-between;
   align-items:center;
@@ -128,6 +112,7 @@
   font-size: 17px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 0;
 }
 .productCard .discription{
   padding-left: 10px;
@@ -137,8 +122,8 @@
   height: 31px;
   max-height: 31px;
   min-height: 31px;
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+  overflow: hidden; 
+  text-overflow: ellipsis; 
   white-space: nowrap;
 
 }
@@ -193,28 +178,7 @@
   color: var(--primarycolor); 
   animation: dislike_effect 400ms ease;
 }
-.button-container .checkmark {
-  
-  top: 0;
-  left: 0;
-  height: 2em;
-  width: 2em;
-  transition: 100ms;
-  animation: dislike_effect 400ms ease;
-}
 
-.button-container .container input:not(:checked) + .checkmark path {
-  stroke: var(--primarycolor); 
-}
-
-.button-container .container input:checked ~ .checkmark {
-  animation: like_effect 400ms ease;
-  
-}
-.button-container .container input:checked ~ .checkmark path {
-  fill: var(--primarycolor);
-  stroke-width: 0;
-}
 .button-container .btn{
   background-color: var(--primarycolor);
   color:var(--lightColor);
@@ -222,6 +186,7 @@
   text-decoration:none;
   font-weight: bold;
   padding: 0.41rem 1rem;
+  margin-bottom: 7px;
   border-radius: 30px;
   border: 2px solid transparent;
   transition: 0.5s;
@@ -232,38 +197,32 @@
   color:var(--primarycolor);
 }
 
-
-@keyframes like_effect {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes dislike_effect {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
 .align-center{
   text-align: center;
 }
 .Ppagination{
   text-align: center;
   margin-bottom: 20px;
+}
+.absolute-sider {
+  position: fixed;
+  z-index: 200;
+  background-color: transparent;
+}
+.searchbarr{
+  display: none;
+}
+@media only screen and (max-width: 767px) { 
+  .customMenu{
+    display: none;
+  }
+  .searchbarr{
+    margin-top: 20px;
+    display: block;
+  }
+  .inner-content .all-products{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

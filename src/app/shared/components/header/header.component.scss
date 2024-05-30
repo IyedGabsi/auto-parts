@@ -95,28 +95,8 @@ nav{
     display: flex;
   }
  
-  #menu{
-    margin-right: 20px;
-    display: block;
-    position: relative;
-    appearance: none;
-    border: none;
-    background: none;
-    cursor: pointer;
-    user-select: none;
-}
+ 
 
-#menu span{
-    display: block;
-    width: 33px;
-    height: 4px;
-    background-color: var(--lightColor);
-    border-radius: 6px;
-    transform-origin: 0 0;
-    transition: 0.4s;
-    margin-bottom: 5px;
-}
-#menu :hover .menu-Bar{display: none;}
 .ant-menu-submenu-title .anticon {
     min-width: 14px;
     font-size: 16px;
@@ -135,6 +115,90 @@ nav{
   
   .ant-btn-icon-only[_ngcontent-ng-c2471756005] > *[_ngcontent-ng-c2471756005] {
     font-size: 20px;
+  }
+
+  #menu {
+    display: none;
+  }
+  
+  @media screen and (max-width: 767px) {
+   
+    #getMenu{
+        display: none;
+    }
+    .boxContainer{
+        display: none;
+    }
+    #menu {
+        margin-top: 13px;
+    
+      display: block;
+      position: relative;
+      appearance: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      user-select: none;
+    }
+  
+    #menu span {
+      display: block;
+      width: 33px;
+      height: 4px;
+      border-radius: 6px;
+      transform-origin: 0 0;
+      transition: 0.4s;
+      margin-bottom: 5px;
+    }
+    :root{
+        --padding:1.5rem
+    }
+    html{
+        font-size: 13px;
+    }
+    nav {
+        position: fixed;
+        z-index: 190;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 82px;
+        /* padding-top: 0; */
+    }
+    nav .content{
+        padding-left: 0;
+        padding-right: 6px;
+    }
+    // nav h2{
+    //     font-size: 1.8rem;
+    //     letter-spacing:0.12rem;
+    // }
+    nav > a{
+        display: none;
+    }
+    .fakenav{
+        height: 70px;
+        background-color: var(--lightColor2);
+    }
+    #getMenu{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #4143A2;
+        
+    }
+    #getMenu.is-active{
+        display: block;
+    }
+    nav ul li{
+        display: block;
+        text-align: center;
+        margin: 50px;
+    }
   }
   
   

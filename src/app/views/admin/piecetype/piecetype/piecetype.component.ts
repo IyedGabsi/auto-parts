@@ -72,11 +72,11 @@ export class PiecetypeComponent {
     const control = this.validateForm.get('name');
     if (control && control.errors) {
       if (control.errors['required']) {
-        return 'Le nom de la marque est requis !';
+        return 'Le nom de la piece est requis !';
       } else if (control.errors['minlength']) {
-        return `Le nom de la marque doit comporter au moins ${control.errors['minlength'].requiredLength} caractères.`; 
+        return `Le nom de la piece doit comporter au moins ${control.errors['minlength'].requiredLength} caractères.`; 
       } else if (control.errors['maxlength']) {
-        return `Le nom de la marque ne doit pas dépasser ${control.errors['maxlength'].requiredLength} caractères.`; 
+        return `Le nom de la piece ne doit pas dépasser ${control.errors['maxlength'].requiredLength} caractères.`; 
       }
     }
     return '';
@@ -99,9 +99,9 @@ export class PiecetypeComponent {
     if (this.selectedImageFile) {
       formData.append('image', this.selectedImageFile);
     }
-    
-    this.isLoading = true;
-    if(this.modalTitle==='Ajouter Une Marque'){
+    console.log('hiiiiiiiiiiiiiii')
+    // this.isLoading = true;
+    if(this.modalTitle==='Ajouter Un type de piece'){
         console.log('hiiiiiiiiiiiiiii')
       this.pts.addPieceType(formData).subscribe((data:any)=>{
         this.listOfData.push(data.data)
@@ -118,7 +118,8 @@ export class PiecetypeComponent {
       }
       
     )
-    }else if(this.modalTitle==='Modifier Marque'){
+    }else if(this.modalTitle==='Modifier Type de piece'){
+      console.log('hiiii')
        this.pts.UpdatePieceType(formData,this.itemData.id).subscribe((data:any)=>{
         this.listOfData.splice(this.index,1,data.data)
     

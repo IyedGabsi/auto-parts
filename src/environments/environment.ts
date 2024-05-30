@@ -1,3 +1,3 @@
 export enum Environment {
-  urlBackend='https://pfe-gxsv.onrender.com/api/v1/'
+  urlBackend='http://localhost:8000/api/v1/'
 }

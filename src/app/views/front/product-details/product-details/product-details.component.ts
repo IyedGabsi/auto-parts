@@ -205,8 +205,9 @@ export class ProductDetailsComponent implements OnInit{
   isFavorite: boolean = false
   
  
-  toggleFavorite(event: any, index: number) {
-    const product = this.relatedProducts[index];
+  toggleFavorite(event: any, index ?: number) {
+    if(index){
+      const product = this.relatedProducts[index];
     product.isFavorite = event.target.checked;
 
     if (product.isFavorite) {
@@ -226,6 +227,29 @@ export class ProductDetailsComponent implements OnInit{
         this.ws.deleteProductFromWhishList(product._id).subscribe((res:any)=>{
            
         })
+      }
+    }
+    }else{
+      const product=this.productData
+      product.isFavorite=event.target.checked
+      if (product.isFavorite) {
+      
+        let data={
+          productId:product._id
+        }
+        this.ws.addProductToWishList(data).subscribe((res:any)=>{
+          this.wishList.push(product._id)
+        },(err)=>{
+          this.messageService.error(`Vous devriez d'abord vous connecter`)
+        })
+      } else {
+        const wishListIndex = this.wishList.indexOf(product._id);
+        if (wishListIndex !== -1) {
+          this.wishList.splice(wishListIndex, 1);
+          this.ws.deleteProductFromWhishList(product._id).subscribe((res:any)=>{
+             
+          })
+        }
       }
     }
     

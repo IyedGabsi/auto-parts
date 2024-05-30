@@ -57,13 +57,14 @@ html{
 .productInformations{
     width: 100%;
     padding-top: 1.6rem;
-    padding-right: 7.5rem;
-    padding-left: 7.5rem;
+    padding-right: 7%;
+    padding-left: 7%;
     display: flex;
     flex-wrap: wrap;
 }
 .productImages{
   width: 40%;
+  min-width: 330px;
   height: 600px;
   
   
@@ -123,6 +124,7 @@ html{
   }
   .productInformations .textContent{
       width: 60%;
+      min-width: 300px;
       padding-left: 1.3rem;
       padding-bottom: 7rem;
       font-size: 1.2rem;
@@ -170,8 +172,8 @@ html{
 .reviews{
     width: 100%;
     padding-top: 1.6rem;
-    padding-right: 7.5rem;
-    padding-left: 7.5rem;
+    padding-right: 7%;
+    padding-left: 7%;
   }
   .reviewInformations{
     padding: 1rem;
@@ -211,6 +213,13 @@ html{
     
     display: flex;
     
+  }
+  .review p{
+    max-width: 100%;
+    word-wrap: break-word; 
+    word-break: break-word; 
+    white-space: normal; 
+    overflow-wrap: break-word;
   }
   .review .nameRating .name{
     margin-right: 1rem;

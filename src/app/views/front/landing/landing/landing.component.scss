@@ -47,8 +47,8 @@ h3 {
     background-color: #7173bf ;
     width: 100%;
     padding-top: .8rem;
-    padding-right: 7.5rem;
-    padding-left: 7.5rem;
+    padding-right: 7%;
+    padding-left: 7%;
     margin-bottom: 3rem;
     border-radius: .5rem;
   }
@@ -77,8 +77,8 @@ h3 {
   .mostSold{
     width: 100%;
     padding-top: .8rem;
-    padding-right: 7.5rem;
-    padding-left: 7.5rem;
+    padding-right: 7%;
+    padding-left: 7%;
     margin-bottom: 3rem;
   }
   .mostSold .content .title{
@@ -262,4 +262,24 @@ h3 {
 }
   .align-center{
     text-align: center;
+  }
+  @media only screen and (max-width: 767px) { 
+    .leftside{
+      display: none;
+    }
+    .rightside{
+      display: none;
+    }
+    .homme{
+      height: 300px;
+    }
+    .carousell{
+      width: 100%;
+    }
+    .content .products{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
   }

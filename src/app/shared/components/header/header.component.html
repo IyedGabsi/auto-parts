@@ -21,7 +21,7 @@
            
             <a routerLink="/"><h2>Auto<span>Parts</span></h2></a>
         </div>
-        <div class="boxContainer">
+        <div class="boxContainer" >
             
           <nz-input-group [nzSuffix]="suffixIconButton"  >
             <input type="text" [(ngModel)]="searchKeyword" nz-input placeholder="Recherche par nom de produit." />
@@ -31,11 +31,17 @@
                   </ng-template>
             
         </div>
-        <ul id="getMenu">
+        <ul [ngClass]="{ 'is-active': isMenuActive }" id="getMenu">
             <li><a routerLink="/allproducts"><i class="fa-solid fa-shop"></i>   Magasin</a></li>
             <li><a routerLink="/user/cart"><i class="fa-solid fa-cart-shopping"></i>   Chariot</a></li>
             <li><a routerLink="/user"><i class="fa-regular fa-user"></i>   Profil</a></li>
         </ul>
+        <button id="menu" (click)="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
     </div>
 </nav>
+<div class="fakenav"></div>
 

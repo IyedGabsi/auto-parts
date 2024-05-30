@@ -56,8 +56,8 @@
   .relatedProducts{
     width: 100%;
     padding-top: 1.6rem;
-    padding-right: 7.5rem;
-    padding-left: 7.5rem;
+    padding-right: 7%;
+    padding-left: 7%;
     margin-bottom: 3rem;
   }
   .content .title{
@@ -197,6 +197,10 @@
   .align-center{
     text-align: center;
   }
+  .align-right{
+    display: flex;
+    justify-content: flex-end;
+  }
   .favorite-checkbox {
     display: flex;
     align-items: center;
@@ -204,3 +208,15 @@
   i {
     transition: transform 0.2s ease-in-out;
   }
+  @media only screen and (max-width: 767px) {
+    .productImages{
+      height: 450px;
+    }
+    .content .products{
+      flex-direction: column;
+      align-items: center;
+    }
+    .productInformations .textContent{
+      padding-bottom: 20px;
+    }
+   }

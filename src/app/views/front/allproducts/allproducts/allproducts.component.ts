@@ -97,7 +97,12 @@ export class AllproductsComponent implements OnInit,OnDestroy {
       }
     });
   }
-  
+  search(){
+    if(this.keyword!==''){
+      this.params.keyword=this.keyword
+    }
+    this.getProducts(this.params)
+  }
   applyFunction(keyword:string){
     this.params.keyword=keyword
     this.getProducts(this.params,this.listOfTagMarques)
@@ -389,7 +394,16 @@ export class AllproductsComponent implements OnInit,OnDestroy {
       this.messageService.error(`Vous devriez d'abord vous connecter`)
     })
   }
+
+  isCollapsed = true; 
+  test=false
+onCollapseChange(collapsed: boolean) {
+  this.isCollapsed = collapsed;
+  this.test=collapsed
+  console.log(this.isCollapsed)
+}
   ngOnDestroy(): void {
+
     if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
     localStorage.removeItem('vehicTypeId');
     localStorage.removeItem('categorieId');
@@ -398,4 +412,5 @@ export class AllproductsComponent implements OnInit,OnDestroy {
     localStorage.removeItem('keyword');
     }
   }
+
 }

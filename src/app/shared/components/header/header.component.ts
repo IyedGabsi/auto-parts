@@ -71,4 +71,10 @@ export class HeaderComponent {
     localStorage.setItem('pieceTypeId',idp)
     this.router.navigate(['/allproducts'])
   }
+  isMenuActive = false;
+
+  toggleMenu() {
+    this.isMenuActive = !this.isMenuActive;
+    console.log(this.isMenuActive)
+  }
 }
