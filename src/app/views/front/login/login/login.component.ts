@@ -68,7 +68,7 @@ export class LoginComponent {
     if(this.as.loggedIn()){
       this.route.navigate(['/'])
     }
-    this.url=this.ar.snapshot.queryParams['returnUrl']||'/admin/users'
+    this.url=this.ar.snapshot.queryParams['returnUrl']||'/admin/orders'
     
   }
 }

@@ -35,7 +35,7 @@ export class SendCodeComponent {
     const control = this.validateForm.get('resetCode');
     if (control && control.errors) {
       if (control.errors['required']) {
-        return 'Numéro de téléphone est requis !';
+        return 'Le code est requis !';
       } else if (control.errors['minlength']||control.errors['maxlength']) {
         return `Le Code doit comporter exactement 6 chiffres.`;
       }

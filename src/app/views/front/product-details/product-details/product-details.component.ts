@@ -142,8 +142,10 @@ export class ProductDetailsComponent implements OnInit{
     
     let data={productId:id}
     this.cs.addProductToCart(data).subscribe((res:any)=>{
+      console.log(res)
      this.router.navigate(['/user/cart'])
-    },(err:any)=>{
+    },(err:HttpErrorResponse)=>{
+      console.log(err)
       this.messageService.error(`Vous devriez d'abord vous connecter`)
     })
   }

@@ -66,7 +66,7 @@ export class AllproductsComponent implements OnInit,OnDestroy {
   radioValue = ''
   totalProducts=0
   currentPage = 1; 
-  pageSize = 5
+  pageSize = 10
   sortBy:any
   mostSelled=false
   creatAt=false

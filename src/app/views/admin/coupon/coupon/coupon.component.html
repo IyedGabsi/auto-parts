@@ -1,0 +1,59 @@
+
+<h3 style="margin-bottom: 16px ">Nos Coupons</h3>
+<div class="align-right">
+    <button nz-button nzType="primary" (click)="showAddModal()">
+      <span>Ajouter Coupon</span>
+    </button>
+</div>
+<nz-list nzBordered >
+    
+      <nz-list-item *ngFor="let item of coupons;index as i ">
+        <span nz-typography>    {{item.couponWord}}</span>
+        Expiré: {{ item.expire }}
+        <span nz-typography>  réduction par: {{item.discount}}%</span>
+        <ul nz-list-item-actions>
+            <nz-list-item-action><a (click)="showUpdateModal(item._id,item.couponWord,item.expire,item.discount,i)">modifier</a></nz-list-item-action>
+            <nz-list-item-action><a (click)="delete(item._id,i)">Supprimer</a></nz-list-item-action>
+          </ul>
+      </nz-list-item>
+    
+   
+  </nz-list>
+  <nz-modal
+          [(nzVisible)]="isVisible"
+          nzTitle={{modalTitle}}
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="submitForm(validateForm)"
+          [nzOkLoading]="isLoading"
+          [nzOkDisabled]="!validateForm.valid"
+        >
+          <ng-container *nzModalContent class="custom-modalContent">
+            
+              <form #f="ngForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)">
+                
+                  <nz-form-item >
+                    
+                    <nz-form-control [nzSpan]="14" [nzErrorTip]="getNameErrorMessage()">
+                      <input nz-input [(ngModel)]="itemData.couponWord" placeholder="Coupon" formControlName='couponWord' type="text" id="name" />
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item >
+                    
+                    <nz-form-control [nzSpan]="14" nzErrorTip="Le date d'expiration est requis !">
+                        <nz-date-picker [(ngModel)]="itemData.expire" formControlName="expire"></nz-date-picker>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item >
+                    
+                    <nz-form-control [nzSpan]="14" nzErrorTip="Le !">
+                      <input type="number" [(ngModel)]="demoValue" nz-input formControlName="discount" placeholder="Rémise" />
+                     
+                    </nz-form-control>
+                  </nz-form-item>
+
+                  
+                </form>
+                
+          </ng-container>
+      
+        </nz-modal>

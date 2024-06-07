@@ -11,6 +11,24 @@
             </div>
         </div>
         <hr>
+        
+        <div class="collap">
+            <h3 class="coltitle">Foire aux Questions (FAQ)</h3>
+            <nz-collapse nzAccordion [nzGhost]="true" >
+                @for (panel of panels; track panel) {
+                  <nz-collapse-panel [nzHeader]="panel.name" [nzActive]="panel.active"  style="color: #fff;">
+                    <nz-collapse nzAccordion [nzGhost]="true" >
+                        @for (panelC of panel.childPanel; track panelC) {
+                          <nz-collapse-panel [nzHeader]="panelC.name" [nzActive]="panelC.active" style="color: #fff;">
+                            <p style="color: #fff;">{{ panelC.content }}</p>
+                          </nz-collapse-panel>
+                        }
+                      </nz-collapse>
+                  </nz-collapse-panel>
+                }
+              </nz-collapse>
+            </div>
+            <hr>
         <div class="link-boxes">
             <ul class="boxs">
                 <li class="link_name">Contact Us</li>
@@ -20,11 +38,13 @@
             </ul>
             <ul class="boxs">
                 <li class="link_name">Quick Links</li>
-                <li><a routerLink="/">Home</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Home</a></li>
+                <!-- <li><a href="#">Privacy Policy</a></li> -->
+                <li><a href="/terms">Conditions Générales de Vente</a></li>
             </ul>
+            
         </div>
+       
         <hr>
     </div>
     <div class="bottom_details">

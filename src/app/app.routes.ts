@@ -11,7 +11,7 @@ export const routes: Routes = [
     {path:'',component:FrontLayoutComponent,children:[
         {path:'login',loadChildren:()=>import('./views/front/login/login.module').then(m=>m.LoginModule)},
         {path:'register',loadChildren:()=>import('./views/front/register/register.module').then(m=>m.RegisterModule)},
-
+        {path:'terms',loadChildren:()=>import('./views/front/terms/terms.module').then(m=>m.TermsModule)},
         {path:'verifRegister',loadChildren:()=>import('./views/front/vrif-register/vrif-register.module').then(m=>m.VrifRegisterModule)},
         {path:'forgotPassword',loadChildren:()=>import('./views/front/forgot-password/forgot-password.module').then(m=>m.ForgotPasswordModule)},
         {path:'productDetails',loadChildren:()=>import('./views/front/product-details/product-details.module').then(m=>m.ProductDetailsModule)},
@@ -30,9 +30,11 @@ export const routes: Routes = [
         {path:'',loadChildren:()=>import('./views/admin/admin-users/admin-users.module').then(m=>m.AdminUsersModule)},
         {path:'users',loadChildren:()=>import('./views/admin/admin-users/admin-users.module').then(m=>m.AdminUsersModule)},
         {path:'marques',loadChildren:()=>import('./views/admin/admin-marques/admin-marques.module').then(m=>m.AdminMarquesModule)},
+        {path:'modèles',loadChildren:()=>import('./views/admin/sousmarque/sousmarque.module').then(m=>m.SousmarqueModule)},
         {path:'piecetypes',loadChildren:()=>import('./views/admin/piecetype/piecetype.module').then(m=>m.PiecetypeModule)},
         {path:'products',loadChildren:()=>import('./views/admin/products/products.module').then(m=>m.ProductsModule)},
         {path:'addProduct',loadChildren:()=>import('./views/admin/addproduct/addproduct.module').then(m=>m.AddproductModule)},
         {path:'orders',loadChildren:()=>import('./views/admin/orders/orders.module').then(m=>m.OrdersModule)},
+        {path:'coupons',loadChildren:()=>import('./views/admin/coupon/coupon.module').then(m=>m.CouponModule)}
     ]},
 ];

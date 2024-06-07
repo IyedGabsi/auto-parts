@@ -13,25 +13,37 @@
         </li>
         <li nz-menu-item (nzClick)="navigateToTeams()" routerLink="/admin/users" *ngIf="this.as.adminloggedIn()">
           <span nz-icon nzType="team"></span>
-          <span>Users</span>
+          <span>Utilisateurs</span>
         </li>
+        
         <li nz-menu-item (nzClick)="navigateToUsers()" routerLink="/admin/marques" *ngIf="this.as.adminloggedIn()">
           <span nz-icon nzType="appstore" nzTheme="outline"></span>
           <span>Marques</span>
         </li>
+        <li nz-menu-item (nzClick)="navigateToUsers()" routerLink="/admin/modèles" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="car" nzTheme="outline"></span>
+          <span>Modèles de véhicule</span>
+        </li>
         <li nz-menu-item (nzClick)="navigateToUsers()" routerLink="/admin/piecetypes" *ngIf="this.as.adminloggedIn()">
-          <span nz-icon nzType="appstore" nzTheme="outline"></span>
+          <span nz-icon nzType="branches" nzTheme="outline"></span>
           <span>Type de piece</span>
         </li>
         <li nz-menu-item  routerLink="/admin/products" *ngIf="this.as.adminloggedIn()">
-          <span nz-icon nzType="appstore-add"></span>
+          <span nz-icon nzType="appstore"></span>
           <span>Les Produits</span>
         </li>
         <li nz-menu-item  routerLink="/admin/addProduct" *ngIf="this.as.adminloggedIn()">
           <span nz-icon nzType="appstore-add"></span>
           <span>Ajouter Produit</span>
         </li>
-        
+        <li nz-menu-item  routerLink="/admin/coupons" *ngIf="this.as.adminloggedIn()">
+          <span nz-icon nzType="scissor"></span>
+          <span>Coupons</span>
+        </li>
+        <li nz-menu-item  routerLink="/user/informations" *ngIf="this.as.loggedIn()">
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          <span>{{name}}</span>
+        </li>
         
         <li nz-menu-item  routerLink="/user/cart" *ngIf="this.as.loggedIn() && !this.as.adminloggedIn()">
           <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>

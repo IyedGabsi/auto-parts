@@ -33,7 +33,7 @@
         </div>
         <ul [ngClass]="{ 'is-active': isMenuActive }" id="getMenu">
             <li><a routerLink="/allproducts"><i class="fa-solid fa-shop"></i>   Magasin</a></li>
-            <li><a routerLink="/user/cart"><i class="fa-solid fa-cart-shopping"></i>   Chariot</a></li>
+            <li *ngIf="!this.as.adminloggedIn()"><a routerLink="/user/cart"><i class="fa-solid fa-cart-shopping"></i>   Chariot</a></li>
             <li><a routerLink="/user"><i class="fa-regular fa-user"></i>   Profil</a></li>
         </ul>
         <button id="menu" (click)="toggleMenu()">

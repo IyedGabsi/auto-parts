@@ -27,13 +27,13 @@ export class SidebarComponent {
   
   isCollapsed = false;
   navigateToUsers() {
-    // Your logic for navigating to the Users page
-    console.log('User clicked'); // Example placeholder
+    
+    console.log('User clicked');
   }
 
   navigateToTeams() {
-    // Your logic for navigating to the Teams page
-    console.log('Team clicked'); // Example placeholder
+    
+    console.log('Team clicked'); 
   }
   logout(){
     this.as.logout()

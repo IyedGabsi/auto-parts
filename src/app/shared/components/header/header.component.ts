@@ -10,6 +10,7 @@ import { PieceTypeService } from '../../../views/services/piece-type.service';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputNumberGroupWhitSuffixOrPrefixDirective } from 'ng-zorro-antd/input-number';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../views/services/auth.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -25,7 +26,7 @@ export class HeaderComponent {
   pieceTypes:any=[]
   @Output() applySearch: EventEmitter<any> = new EventEmitter<any>();
   
-  constructor(private vs:VehictypeService, private ps:PieceTypeService,private router:Router,private location: Location){}
+  constructor(private vs:VehictypeService, private ps:PieceTypeService,private router:Router,private location: Location,public as:AuthService){}
   search(){
     if(this.searchKeyword){
       let currentUrl=this.location.path()
