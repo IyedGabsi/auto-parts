@@ -40,7 +40,7 @@
           <span nz-icon nzType="scissor"></span>
           <span>Coupons</span>
         </li>
-        <li nz-menu-item  routerLink="/user/informations" *ngIf="this.as.loggedIn()">
+        <li nz-menu-item  routerLink="/user/informations" *ngIf="this.as.adminloggedIn()">
           <span nz-icon nzType="user" nzTheme="outline"></span>
           <span>{{name}}</span>
         </li>
@@ -85,7 +85,7 @@
         </nz-breadcrumb> -->
         <div class="inner-content">  <router-outlet></router-outlet>  </div>
       </nz-content>
-      <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+      <nz-footer>Copyright &#169; 2024 <a href="#"><span>AutoParts</span></a>. All rigths reserved</nz-footer>
     </nz-layout>
   </nz-layout>
 

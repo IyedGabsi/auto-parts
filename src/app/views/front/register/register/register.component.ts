@@ -102,7 +102,7 @@ export class RegisterComponent {
       // this.router.navigate(['/'])
       
     },(err)=>{console.log(err)
-      // this.messageService.error(err.error.message)
+      this.messageService.error(err.error.errors[0].msg)
     })
   }
   constructor(private fb: NonNullableFormBuilder , private as:AuthService,private messageService: NzMessageService,private router:Router) {
