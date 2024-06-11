@@ -34,7 +34,7 @@ export class AdminMarquesComponent {
   constructor(private mds:MarquesDataService ,private messageService: NzMessageService) {
     this.mds.getAllMarques().subscribe((data:any)=>{
       this.listOfData=data.data
-      
+      console.log(this.listOfData)
       this.results=data.results
       
     })
